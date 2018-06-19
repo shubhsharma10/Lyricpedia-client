@@ -31,6 +31,7 @@
     "core-js": "^2.5.4",
     "express": "^4.16.3",
     "ng-table": "^3.0.1",
+    "ngx-infinite-scroll": "^6.0.1",
     "path": "^0.12.7",
     "rxjs": "^6.0.0",
     "typescript": "~2.7.2",

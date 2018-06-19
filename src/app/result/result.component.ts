@@ -11,9 +11,10 @@ import {TrackModel} from '../models/track.model.client';
 })
 export class ResultComponent implements OnInit, OnDestroy {
   userInput: UserInput = {
-    input: ''
+    input: 'badshah'
   };
   tracks = [];
+  cols = [];
   constructor(public dataService: DataService,
               private musicService: MusixMatchAPIServiceClient) {
   }
@@ -25,8 +26,11 @@ export class ResultComponent implements OnInit, OnDestroy {
         const tracks = (result as any).message.body.track_list;
         const resultTracks = tracks.map(x => x.track);
         this.tracks = resultTracks;
-        console.log(this.tracks[0].track_name);
-        //console.log(JSON.parse(resultTracks[0]));
+        this.cols = [
+          {prop: 'track_name', name: 'Title'},
+          {prop: 'artist_name', name: 'Artist'},
+          {prop: 'album_name', name: 'Album'}];
+        console.log(this.tracks);
       });
   }
   handleKeyUp() {
@@ -41,6 +45,7 @@ export class ResultComponent implements OnInit, OnDestroy {
     else {
       this.userInput = new UserInput();
     }
+    this.searchForTracks('badshah');
   }
   ngOnDestroy() {}
 

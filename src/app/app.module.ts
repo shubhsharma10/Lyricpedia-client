@@ -15,6 +15,8 @@ import { ResultComponent } from './result/result.component';
 import {DataService} from './services/data.sevice';
 import {MusixMatchAPIServiceClient} from './services/musixmatch.service.client';
 import {NgxDatatableModule} from '@swimlane/ngx-datatable';
+import { ArtistPageComponent } from './artist-page/artist-page.component';
+import { AlbumPageComponent } from './album-page/album-page.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import {NgxDatatableModule} from '@swimlane/ngx-datatable';
     RegisterComponent,
     ProfileComponent,
     AdminPageComponent,
-    ResultComponent
+    ResultComponent,
+    ArtistPageComponent,
+    AlbumPageComponent
   ],
   imports: [
     BrowserModule,

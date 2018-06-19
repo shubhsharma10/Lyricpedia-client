@@ -42,3 +42,24 @@
   border: 2px solid #e50914;
   width: 100%;
 }
+/*ngx-datatable{*/
+  /*top: 0;*/
+  /*left: 0;*/
+  /*right: 0;*/
+  /*bottom: 0;*/
+  /*width: 100%;*/
+/*}*/
+.ngx-datatable {
+  border-radius: 5px;
+  width: 100%;
+  padding: 5px;
+  margin: 5px;
+  float: none;
+}
+.ngx-datatable.fixed-header .datatable-header .datatable-header-inner .datatable-header-cell {
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  white-space: normal !important;
+  text-align: center !important;
+  vertical-align: middle !important;
+}

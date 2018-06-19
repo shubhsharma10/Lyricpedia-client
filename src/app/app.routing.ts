@@ -5,6 +5,8 @@ import {LoginComponent} from './login/login.component';
 import {ProfileComponent} from './profile/profile.component';
 import {RegisterComponent} from './register/register.component';
 import {ResultComponent} from './result/result.component';
+import {ArtistPageComponent} from './artist-page/artist-page.component';
+import {AlbumPageComponent} from './album-page/album-page.component';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -13,6 +15,8 @@ const appRoutes: Routes = [
   { path: 'login', component: LoginComponent},
   { path: 'profile', component: ProfileComponent},
   { path: 'register', component: RegisterComponent},
+  { path: 'artist/:artistId', component: ArtistPageComponent},
+  { path: 'album/:albumId', component: AlbumPageComponent},
   { path: '**', component: HomePageComponent} // last
 ];
 
