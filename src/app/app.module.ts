@@ -11,6 +11,10 @@ import { RegisterComponent } from './register/register.component';
 import { ProfileComponent } from './profile/profile.component';
 import { AdminPageComponent } from './admin-page/admin-page.component';
 import {UserServiceClient} from './services/user.service.client';
+import { ResultComponent } from './result/result.component';
+import {DataService} from './services/data.sevice';
+import {MusixMatchAPIServiceClient} from './services/musixmatch.service.client';
+import {NgxDatatableModule} from '@swimlane/ngx-datatable';
 
 @NgModule({
   declarations: [
@@ -21,15 +25,19 @@ import {UserServiceClient} from './services/user.service.client';
     LoginComponent,
     RegisterComponent,
     ProfileComponent,
-    AdminPageComponent
+    AdminPageComponent,
+    ResultComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgxDatatableModule
   ],
   providers: [
-    UserServiceClient
+    UserServiceClient,
+    DataService,
+    MusixMatchAPIServiceClient
   ],
   bootstrap: [AppComponent]
 })

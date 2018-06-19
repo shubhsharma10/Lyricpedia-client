@@ -1,15 +1,14 @@
 <app-top-navbar></app-top-navbar>
-<div class="container-fluid py-5">
+<div class="container py-5">
   <div class="container vertical-center py-2">
     <div class="col">
       <div class="row flex-wrap">
         <h1 class="LandingText float-left">Explore music</h1>
       </div>
       <div class="row Search1">
-        <input onKeyUp="handleKeyUp()"
-               onChange="inputChanged()"
+        <input (keyup.enter)="handleKeyUp()"
                placeholder="Type lyrics here.."
-               [(ngModel)]="inputValue">
+               [(ngModel)]="userInput.input">
       </div>
     </div>
   </div>

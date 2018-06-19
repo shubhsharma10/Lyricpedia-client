@@ -1,3 +1,5 @@
+export const API_KEY = '629bf02832ff5f4513c42b46453c2340';
+
 export const USER_API_URL =
   'https://lyricpedia-server.herokuapp.com/api/user';
 export const PROFILE_API_URL =

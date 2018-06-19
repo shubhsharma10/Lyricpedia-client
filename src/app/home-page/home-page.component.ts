@@ -1,21 +1,27 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
+import {UserInput} from '../models/user.input';
+import {DataService} from '../services/data.sevice';
 
 @Component({
   selector: 'app-home-page',
   templateUrl: './home-page.component.html',
   styleUrls: ['./home-page.component.css']
 })
-export class HomePageComponent implements OnInit {
+export class HomePageComponent implements OnInit, OnDestroy {
 
-  constructor() { }
-  inputValue = '';
-  inputChanged() {
-    console.log('input changed');
-  }
+  userInput: UserInput = {
+    input: ''
+  };
+  constructor(private router: Router,
+              public dataService: DataService) { }
   handleKeyUp() {
-    console.log('handle key up');
+    this.router.navigate(['result']);
   }
   ngOnInit() {
+  }
+  ngOnDestroy() {
+    this.dataService.userInput = this.userInput;
   }
 
 }
