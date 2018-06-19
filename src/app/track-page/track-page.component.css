@@ -2,3 +2,11 @@
   border: 0 none;
   padding: 2px;
 }
+.fa-thumbs-down{
+  color: red;
+  cursor: pointer;
+}
+.fa-thumbs-up {
+  color: blue;
+  cursor: pointer;
+}
