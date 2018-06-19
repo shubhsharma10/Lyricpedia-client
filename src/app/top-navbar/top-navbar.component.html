@@ -32,15 +32,20 @@
       </div>
     </ng-template>
     <ng-template #UserSearchBarTemplate>
-      <div class="Search ml-auto">
-        <input (keyup.enter)="handleEnter()"
-               type="search"
-               class="mx-2"
-               placeholder="Type lyrics here.."
-               [(ngModel)]="userInput.input"/>
-
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#UserSearchBar" aria-controls="UserSearchBar" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="UserSearchBar">
+        <div class="row">
+          <div class="Search">
+            <input (keyup.enter)="handleEnter()"
+                   type="search"
+                   placeholder="Type lyrics here.."
+                   [(ngModel)]="userInput.input"/>
+          </div>
+          <a routerLink="/profile" class="user-profile ml-1 pb-2 LandingTextUserName">{{user.username}}</a>
+        </div>
       </div>
-      <a routerLink="/profile" class="user-profile mr-2 pb-2 LandingTextUserName">{{user.username}}</a>
     </ng-template>
   </ng-template>
 </nav>

@@ -96,6 +96,50 @@ export class MusixMatchAPIServiceClient {
       });
   }
 
+  getTrack(trackId) {
+    const params = {
+      format: 'jsonp',
+      callback: 't',
+      track_id: trackId,
+      apikey: constants.API_KEY
+    };
+
+    const esc = encodeURIComponent;
+    const query = Object.keys(params)
+      .map(k => esc(k) + '=' + esc(params[k]))
+      .join('&');
+    const url = 'https://api.musixmatch.com/ws/1.1/track.get?' + query;
+    return fetch(url)
+      .then( (response) => response.text())
+      .then((responseText) => {
+        let match = (responseText as any).slice(2);
+        match = match.slice(0, -2);
+        return JSON.parse(match);
+      });
+  }
+
+  getLyrics(trackId) {
+    const params = {
+      format: 'jsonp',
+      callback: 't',
+      track_id: trackId,
+      apikey: constants.API_KEY
+    };
+
+    const esc = encodeURIComponent;
+    const query = Object.keys(params)
+      .map(k => esc(k) + '=' + esc(params[k]))
+      .join('&');
+    const url = 'https://api.musixmatch.com/ws/1.1/track.lyrics.get?' + query;
+    return fetch(url)
+      .then( (response) => response.text())
+      .then((responseText) => {
+        let match = (responseText as any).slice(2);
+        match = match.slice(0, -2);
+        return JSON.parse(match);
+      });
+  }
+
   searchTracks(word, pageNumber) {
     const params = {
       format: 'jsonp',

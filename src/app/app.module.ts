@@ -17,6 +17,7 @@ import {MusixMatchAPIServiceClient} from './services/musixmatch.service.client';
 import {NgxDatatableModule} from '@swimlane/ngx-datatable';
 import { ArtistPageComponent } from './artist-page/artist-page.component';
 import { AlbumPageComponent } from './album-page/album-page.component';
+import { TrackPageComponent } from './track-page/track-page.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { AlbumPageComponent } from './album-page/album-page.component';
     AdminPageComponent,
     ResultComponent,
     ArtistPageComponent,
-    AlbumPageComponent
+    AlbumPageComponent,
+    TrackPageComponent
   ],
   imports: [
     BrowserModule,

@@ -7,6 +7,7 @@ import {RegisterComponent} from './register/register.component';
 import {ResultComponent} from './result/result.component';
 import {ArtistPageComponent} from './artist-page/artist-page.component';
 import {AlbumPageComponent} from './album-page/album-page.component';
+import {TrackPageComponent} from './track-page/track-page.component';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -17,6 +18,7 @@ const appRoutes: Routes = [
   { path: 'register', component: RegisterComponent},
   { path: 'artist/:artistId', component: ArtistPageComponent},
   { path: 'album/:albumId', component: AlbumPageComponent},
+  { path: 'track/:trackId', component: TrackPageComponent},
   { path: '**', component: HomePageComponent} // last
 ];
 

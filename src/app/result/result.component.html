@@ -12,7 +12,7 @@
       <tbody>
       <tr *ngFor="let track of tracks">
         <td>
-          {{track.track_name}}
+          <a routerLink="/track/{{track.track_id}}">{{track.track_name}}</a>
         </td>
         <td>
           <a routerLink="/artist/{{track.artist_id}}">{{track.artist_name}}</a>

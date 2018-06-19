@@ -1,0 +1,27 @@
+<app-top-navbar></app-top-navbar>
+<div class="container-fluid py-5">
+  <div class="row py-5 px-5">
+    <div class="col-xs-6 col-md-4">
+      <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src={{track.album_coverart_100x100}} alt="album"/>
+      </div>
+    </div>
+    <div class="col-xs-6 col-md-8">
+      <div class="row">
+        <div class="col">
+          <h2>{{track.track_name}}</h2>
+          <a routerLink="/artist/{{track.album_id}}"><h4>{{track.artist_name}}</h4></a>
+        </div>
+      </div>
+      <div class="row pt-3">
+        <div class="col">
+            <h5>Lyrics:</h5>
+            <a class="list-group-item flex-column align-items-start" *ngFor="let lyric of lyrics">
+              <a>{{lyric}}</a>
+            </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<app-bottom-navbar></app-bottom-navbar>
