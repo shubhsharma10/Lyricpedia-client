@@ -10,3 +10,46 @@
   font-weight: 500;
   font-size: 20px;
 }
+.Search {
+  -webkit-box-align: end;
+  -webkit-align-items: flex-end;
+  -ms-flex-align: end;
+  align-items: flex-end;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  width: 80%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  pointer-events: none;
+}
+.Search input{
+  font-family: "Arial", sans-serif;
+  font-weight: 300;
+  font-size: 14px;
+  height: 39px;
+  width: 40%;
+  background: transparent;
+  color: black;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: 1px solid black;
+  outline: none;
+  border-radius: 37px;
+  padding: 0 10px;
+  pointer-events: all;
+  -webkit-transition: border .25s ease, width .125s ease .125s;
+  transition: border .25s ease, width .125s ease .125s;
+}
+.Search input:focus {
+  border: 2px solid #e50914;
+  width: 50%;
+}

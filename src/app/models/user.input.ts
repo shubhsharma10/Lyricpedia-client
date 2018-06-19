@@ -1,3 +1,3 @@
 export class UserInput {
-  input = 'badshah';
+  input = '';
 }
