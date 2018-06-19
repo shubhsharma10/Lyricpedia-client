@@ -1,3 +1,47 @@
-<p>
-  album-page works!
-</p>
+<app-top-navbar></app-top-navbar>
+<div class="container-fluid py-5">
+  <div class="row py-5 px-5">
+    <div class="col-xs-6 col-md-4">
+      <div class="card">
+      <img class="card-img-top" src={{albumCoverArt}} alt="album"/>
+      <div class="card-body text-center">
+        <h3>{{albumName}}</h3>
+        <h6>by&nbsp;
+          <a routerLink="/artist/{{artistId}}">
+          {{artistName}}
+          </a>
+        </h6>
+        <h6>{{trackReleaseYear}}&nbsp;&middot;&nbsp;{{trackCount}} Songs</h6>
+      </div>
+    </div>
+  </div>
+  <div class="col-xs-6 col-md-8">
+    <div class="list-group list-group-flush">
+      <a class="list-group-item list-group-item-action flex-column align-items-start" *ngFor="let track of tracks">
+        <div class="d-flex w-100 justify-content-between flex-nowrap" >
+          <div class="row mx-1">
+            <i class="fa fa-music fa-1x mx-1 py-1"></i>
+            <h5 class="mb-1 mx-2">{{track.track_name}}</h5>
+          </div>
+          <div class="row mx-1">
+            <div class="dropdown mx-1">
+              <a id="dropdownMenu2"
+                 data-toggle="dropdown"
+                 aria-haspopup="true"
+                 aria-expanded="false">
+                <i class="fa fa-ellipsis-h fa-2x"></i>
+              </a>
+              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu2">
+                <button class="dropdown-item" type="button">Comment</button>
+                <button class="dropdown-item" type="button">Add to playlist</button>
+              </div>
+            </div>
+            <small class="mx-1 py-1">{{getTrackLength(track.track_length)}}</small>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>
+</div>
+<app-bottom-navbar></app-bottom-navbar>

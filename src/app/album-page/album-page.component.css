@@ -1,0 +1,9 @@
+.list-group-item:nth-of-type(even){
+  background-color: white;
+}
+.list-group-item:nth-of-type(odd){
+  background-color: #f2f2f2;
+}
+.list-group-item:hover{
+  background: lightblue !important;
+}
