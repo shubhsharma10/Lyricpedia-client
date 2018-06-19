@@ -1,0 +1,18 @@
+<nav class="navbar navbar-expand-lg navbar-light fixed-top container-fluid">
+  <a class="navbar-brand LandingText" routerLink="/home">lyricpedia</a>
+  <div *ngIf="isUserLoggedIn; then LoggedInUserTemplate else NotLoggedInUserTemplate"></div>
+  <ng-template #NotLoggedInUserTemplate>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
+      <a routerLink="/login" class="btn btn-outline-primary mr-2">Login</a>
+      <a routerLink="/register" class="btn btn-outline-primary">Register</a>
+    </div>
+  </ng-template>
+  <ng-template #LoggedInUserTemplate>
+    <div class="ml-auto">
+      <a routerLink="/profile" class="user-profile mx-2 pb-3 LandingTextUserName">{{user.username}}</a>
+    </div>
+  </ng-template>
+</nav>

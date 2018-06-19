@@ -1,0 +1,55 @@
+<app-top-navbar></app-top-navbar>
+<div class="container my-5 py-5">
+  <div class="row align-items-center justify-content-center">
+    <div class="col">
+      <div *ngIf="!isValidUserNamePassword; then InvalidUsernamePassword"></div>
+      <ng-template #InvalidUsernamePassword>
+        <div class="alert alert-danger" role="alert">
+          Please enter valid username and password!
+        </div>
+      </ng-template>
+      <div *ngIf="isUsernameInUse; then UsernameInUse"></div>
+      <ng-template #UsernameInUse>
+        <div class="alert alert-danger" role="alert">
+          Username is already in use. Please choose another username!
+        </div>
+      </ng-template>
+      <div *ngIf="isPasswordNotSame; then DifferentPassword"></div>
+      <ng-template #DifferentPassword>
+        <div class="alert alert-danger" role="alert">
+          Passwords should be same!
+        </div>
+      </ng-template>
+      <h1>Register</h1>
+
+      <input [(ngModel)]="username"
+             type="text"
+             placeholder="username"
+             class="form-control my-2"/>
+      <input [(ngModel)]="password"
+             type="password"
+             required
+             placeholder="password"
+             class="form-control my-2"/>
+      <input [(ngModel)]="password2"
+             type="password"
+             required
+             placeholder="verify password"
+             class="form-control my-2"/>
+      <select [(ngModel)]="selectedUserType" required class="form-control my-2">
+        <option value="Admin">Admin</option>
+        <option value="User">User</option>
+        <option value="Premium">Premium User</option>
+      </select>
+      <button (click)="register(username, password, password2,selectedUserType)"
+              class="btn btn-primary btn-block my-2">
+        Register
+      </button>
+      <div class="d-flex justify-content-between">
+        <button routerLink="/home" class="btn btn-outline-primary">Home</button>
+        <button routerLink="/login" class="btn btn-outline-success">Login</button>
+      </div>
+    </div>
+  </div>
+</div>
+<app-bottom-navbar></app-bottom-navbar>
