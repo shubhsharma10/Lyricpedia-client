@@ -4,9 +4,10 @@
 }
 .fa-thumbs-down{
   color: red;
-  cursor: pointer;
 }
 .fa-thumbs-up {
   color: blue;
+}
+.largeIcon {
   cursor: pointer;
 }

@@ -1,0 +1,36 @@
+<app-top-navbar></app-top-navbar>
+<div class="container py-5">
+  <h5 class="pt-4">Playlists:</h5>
+  <div class="list-group list-group-flush">
+    <div class="panel-group py-1" [attr.id]="'accordion_' + i" *ngFor="let playlist of playlists; let i = index">
+      <div class="panel panel-primary" >
+        <div class="panel-heading">
+          <h5 class="panel-title">
+            <a (click)="setSelectedPlaylist(playlist.name)"
+               data-toggle="collapse"
+               [attr.data-parent]="'#accordion_' + i"
+               [attr.href]="'#collapseOne_' + i">
+              {{playlist.name}}
+            </a>
+          </h5>
+        </div>
+        <div [attr.id]="'collapseOne_' + i" class="panel-collapse collapse in">
+          <div class="panel-body">
+              <a class="list-group-item list-group-item-action flex-column align-items-start" *ngFor="let track of playlist.tracks">
+                <div class="d-flex w-100 justify-content-between flex-nowrap" >
+                  <div class="row mx-1 pt-2">
+                    <i class="fa fa-music fa-1x mx-1 mt-1"></i>
+                    <a class="mx-2" routerLink="/track/{{track.track_id}}"><h5>{{track.track_name}}</h5></a>
+                  </div>
+                  <div class="row mx-1 pt-2">
+                    <i class="fa fa-times"></i>
+                  </div>
+                </div>
+              </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<app-bottom-navbar></app-bottom-navbar>

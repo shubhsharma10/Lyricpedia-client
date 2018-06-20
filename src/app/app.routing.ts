@@ -10,6 +10,7 @@ import {AlbumPageComponent} from './album-page/album-page.component';
 import {TrackPageComponent} from './track-page/track-page.component';
 import {RatedSongsComponent} from './rated-songs/rated-songs.component';
 import {AdminPageComponent} from './admin-page/admin-page.component';
+import {PlaylistsPageComponent} from './playlists-page/playlists-page.component';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -23,6 +24,7 @@ const appRoutes: Routes = [
   { path: 'album/:albumId', component: AlbumPageComponent},
   { path: 'track/:trackId', component: TrackPageComponent},
   { path: 'rated/songs', component: RatedSongsComponent},
+  { path: 'rated/playlist', component: PlaylistsPageComponent},
   { path: '**', component: HomePageComponent} // last
 ];
 

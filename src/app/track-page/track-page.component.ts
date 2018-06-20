@@ -5,6 +5,8 @@ import {Track} from '../models/track.model.client';
 import {UserServiceClient} from '../services/user.service.client';
 import {TrackServiceClient} from '../services/track.service.client';
 import {User} from '../models/user.model.client';
+import {PlaylistServiceClient} from '../services/playlist.service.client';
+import {Playlist} from '../models/playlist.model.client';
 
 @Component({
   selector: 'app-track-page',
@@ -16,7 +18,8 @@ export class TrackPageComponent implements OnInit {
   constructor(private route: ActivatedRoute,
               private trackService: TrackServiceClient,
               private userService: UserServiceClient,
-              private musicService: MusixMatchAPIServiceClient) {
+              private musicService: MusixMatchAPIServiceClient,
+              private playlistService: PlaylistServiceClient) {
     this.route.params.subscribe(params => this.setParams(params));
   }
   trackId: number;
@@ -26,6 +29,8 @@ export class TrackPageComponent implements OnInit {
   isUserLoggedIn = false;
   userCode = 0;
   user: User = new User();
+  newPlaylist: Playlist = new Playlist();
+  playlists: Playlist[] = [];
   setParams(params) {
     if (params['trackId']) {
       this.trackId = Number(params['trackId']);
@@ -36,15 +41,29 @@ export class TrackPageComponent implements OnInit {
   handleRating() {
     this.liked = !this.liked;
     console.log('going to update');
+    let rating = 'like';
     if (this.liked) {
-      this.trackService
-        .updateSong(this.trackId, 'like')
-        .then((updatedSong) => console.log('updatedSong'));
+      rating = 'like';
     } else {
-      this.trackService
-        .updateSong(this.trackId, 'dislike')
-        .then((updatedSong) => console.log('updatedSong'));
+      rating = 'dislike';
     }
+    this.trackService
+      .updateSong(this.trackId, rating)
+      .then((updatedSong) => {
+        this.track.likes = (updatedSong as Track).likes;
+        this.track.dislikes = (updatedSong as Track).dislikes;
+      });
+  }
+  createAndAddToPlaylist() {
+    this.playlistService
+      .createAndAddToPlaylist(this.newPlaylist.name, this.trackId, this.track.track_name)
+      .then((result) => console.log(result));
+  }
+  addToPlaylist(playlistName) {
+    console.log('asking to add to playlist ' + playlistName);
+    this.playlistService
+      .addToPlaylist(playlistName, this.trackId, this.track.track_name)
+      .then((result) => console.log(result));
   }
   loadTrackInfo(trackId) {
     this.musicService
@@ -53,6 +72,8 @@ export class TrackPageComponent implements OnInit {
       const message = (result as any).message;
       if (message.header.status_code === 200) {
         this.track = (result as any).message.body.track as Track;
+        this.track.likes = 0;
+        this.track.dislikes = 0;
         return this.findOrCreateSong(trackId, this.track.track_name);
       }
       });
@@ -65,15 +86,28 @@ export class TrackPageComponent implements OnInit {
         this.lyrics = lyricsPara.split('\n');
       });
   }
+  loadUserData() {
+    this.loadRatingForThisSong();
+    this.loadPlaylists();
+  }
   loadRatingForThisSong() {
     this.trackService.findRatedSongsForUser()
       .then((result) => {
         if (result) {
           const ratingForThisSong = result.filter(x => x.track_id === this.trackId);
           if (ratingForThisSong.length > 0) {
+            console.log(ratingForThisSong);
             this.liked = String(ratingForThisSong[0].rating) === 'like';
+            this.track.likes = ratingForThisSong[0].likes;
+            this.track.dislikes = ratingForThisSong[0].dislikes;
           }
         }
+      });
+  }
+  loadPlaylists() {
+    this.playlistService.findPlaylistsForUser()
+      .then((result) => {
+          this.playlists = result as Playlist[];
       });
   }
   findOrCreateSong(trackId, trackName) {
@@ -112,7 +146,7 @@ export class TrackPageComponent implements OnInit {
         } else if (this.user.userType === 'Admin') {
           this.userCode = 3;
         }
-        return this.loadRatingForThisSong();
+        return this.loadUserData();
       })
       .catch(() => {
         console.log('No user logged in');

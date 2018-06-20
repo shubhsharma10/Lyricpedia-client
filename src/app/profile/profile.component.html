@@ -45,9 +45,10 @@
         <ng-template #AdminPageLink>
           <button routerLink="/admin" class="btn btn-outline-primary">Admin</button>
         </ng-template>
-        <div *ngIf="userCode === 1 || userCode === 2 ; then RatedSongsPageLink"></div>
-        <ng-template #RatedSongsPageLink>
+        <div *ngIf="userCode === 1 || userCode === 2 ; then SongsAndPlaylistsPageLink"></div>
+        <ng-template #SongsAndPlaylistsPageLink>
           <button routerLink="/rated/songs" class="btn btn-outline-primary">Rated Songs</button>
+          <button routerLink="/rated/playlist" class="btn btn-outline-primary">Playlists</button>
         </ng-template>
 
         <button [disabled] = "userNotLoggedIn" (click)="logout()" class="btn btn-outline-danger">Logout</button>

@@ -1,0 +1,19 @@
+.list-group-item {
+  border: 0 none;
+  padding: 2px;
+}
+
+.panel {
+  border: 1px solid grey;
+  border-radius: 5px;
+  padding: 2px;
+}
+.list-group-item:nth-of-type(even){
+  background-color: white;
+}
+.list-group-item:nth-of-type(odd){
+  background-color: #f2f2f2;
+}
+.list-group-item:hover{
+  background: lightblue !important;
+}

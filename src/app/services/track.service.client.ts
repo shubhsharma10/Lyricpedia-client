@@ -39,13 +39,14 @@ export class TrackServiceClient {
       rating: rating
     };
     return fetch(constants.SONG_API_URL + '/' + songId, {
-      body: JSON.stringify(ratingObj),
-      credentials: 'include', // include, same-origin, *omit
-      method: 'put',
-      headers: {
-        'content-type': 'application/json'
-      }
-    });
+        body: JSON.stringify(ratingObj),
+        credentials: 'include', // include, same-origin, *omit
+        method: 'put',
+        headers: {
+          'content-type': 'application/json'
+        }
+      })
+      .then(response => response.json());
   }
 
   findRatedSongsForUser() {

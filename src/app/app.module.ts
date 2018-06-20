@@ -20,6 +20,8 @@ import { AlbumPageComponent } from './album-page/album-page.component';
 import { TrackPageComponent } from './track-page/track-page.component';
 import {TrackServiceClient} from './services/track.service.client';
 import { RatedSongsComponent } from './rated-songs/rated-songs.component';
+import {PlaylistServiceClient} from './services/playlist.service.client';
+import { PlaylistsPageComponent } from './playlists-page/playlists-page.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,8 @@ import { RatedSongsComponent } from './rated-songs/rated-songs.component';
     ArtistPageComponent,
     AlbumPageComponent,
     TrackPageComponent,
-    RatedSongsComponent
+    RatedSongsComponent,
+    PlaylistsPageComponent
   ],
   imports: [
     BrowserModule,
@@ -47,7 +50,8 @@ import { RatedSongsComponent } from './rated-songs/rated-songs.component';
     UserServiceClient,
     DataService,
     MusixMatchAPIServiceClient,
-    TrackServiceClient
+    TrackServiceClient,
+    PlaylistServiceClient
   ],
   bootstrap: [AppComponent]
 })

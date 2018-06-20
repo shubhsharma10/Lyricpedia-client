@@ -15,3 +15,9 @@ export const SONG_API_URL =
   'https://lyricpedia-server.herokuapp.com/api/song';
 export const USER_SONG_API_URL =
   'https://lyricpedia-server.herokuapp.com/api/user/song';
+export const PLAYLIST_API_URL =
+  'https://lyricpedia-server.herokuapp.com/api/playlist';
+export const ADD_TO_PLAYLIST_API_URL =
+  'https://lyricpedia-server.herokuapp.com/api/playlist/add';
+export const USER_PLAYLIST_API_URL =
+  'https://lyricpedia-server.herokuapp.com/api/user/playlist';
