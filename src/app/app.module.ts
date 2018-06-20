@@ -19,6 +19,7 @@ import { ArtistPageComponent } from './artist-page/artist-page.component';
 import { AlbumPageComponent } from './album-page/album-page.component';
 import { TrackPageComponent } from './track-page/track-page.component';
 import {TrackServiceClient} from './services/track.service.client';
+import { RatedSongsComponent } from './rated-songs/rated-songs.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import {TrackServiceClient} from './services/track.service.client';
     ResultComponent,
     ArtistPageComponent,
     AlbumPageComponent,
-    TrackPageComponent
+    TrackPageComponent,
+    RatedSongsComponent
   ],
   imports: [
     BrowserModule,

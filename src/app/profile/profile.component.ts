@@ -14,7 +14,7 @@ export class ProfileComponent implements OnInit {
               private userService: UserServiceClient) { }
   user: User = new User();
   userNotLoggedIn = false;
-  isAdminUser = false;
+  userCode = 0; // 0 for Anonymous user, 1 for Free user, 2 for Premium user, 3 for Admin
   update(user: User) {
     console.log(user);
     this.userService
@@ -42,9 +42,14 @@ export class ProfileComponent implements OnInit {
       })
       .then((result) => {
         this.user = result as User;
-        if (this.user.userType === 'Admin') {
-          this.isAdminUser = true;
+        if (this.user.userType === 'User') {
+          this.userCode = 1;
+        } else if (this.user.userType === 'Premium') {
+          this.userCode = 2;
+        } else if (this.user.userType === 'Admin') {
+          this.userCode = 3;
         }
+
       })
       .catch(() => {
         this.userNotLoggedIn = true;

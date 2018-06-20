@@ -1,0 +1,18 @@
+<app-top-navbar></app-top-navbar>
+<div class="container py-5">
+  <h5 class="pt-4">Rated Songs:</h5>
+  <div class="list-group list-group-flush">
+    <a class="list-group-item list-group-item-action flex-column align-items-start" *ngFor="let track of tracks">
+      <div class="d-flex w-100 justify-content-between flex-nowrap" >
+        <div class="row mx-1">
+          <i class="fa fa-music fa-1x mx-1 py-1"></i>
+          <a class="mb-1 mx-2" routerLink="/track/{{track.track_id}}"><h5>{{track.track_name}}</h5></a>
+        </div>
+        <div class="row mx-1">
+          <i class="fa" [ngClass]="track.rating === 'like' ? 'fa-thumbs-up' : 'fa-thumbs-down'"></i>
+        </div>
+      </div>
+    </a>
+  </div>
+</div>
+<app-bottom-navbar></app-bottom-navbar>

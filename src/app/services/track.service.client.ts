@@ -17,10 +17,13 @@ export class TrackServiceClient {
     return fetch(constants.SONG_API_URL + '/' + trackId);
   }
 
-  createTrack(trackId) {
+  createTrack(trackId, trackName) {
     const song = {
-      track_id: trackId
+      track_id: trackId,
+      track_name: trackName
     };
+    console.log('creating song');
+    console.log(song);
     return fetch(constants.SONG_API_URL, {
       body: JSON.stringify(song),
       credentials: 'include', // include, same-origin, *omit

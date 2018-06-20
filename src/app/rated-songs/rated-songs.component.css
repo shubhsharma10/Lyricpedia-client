@@ -1,0 +1,10 @@
+.list-group-item {
+  border: 0 none;
+  padding: 2px;
+}
+.fa-thumbs-down{
+  color: red;
+}
+.fa-thumbs-up {
+  color: blue;
+}

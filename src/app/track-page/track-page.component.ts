@@ -34,6 +34,7 @@ export class TrackPageComponent implements OnInit {
   }
   handleRating() {
     this.liked = !this.liked;
+    console.log('going to update')
     if (this.liked) {
       this.trackService
         .updateSong(this.trackId, 'like')
@@ -51,6 +52,7 @@ export class TrackPageComponent implements OnInit {
       const message = (result as any).message;
       if (message.header.status_code === 200) {
         this.track = (result as any).message.body.track as Track;
+        return this.findOrCreateSong(trackId, this.track.track_name);
       }
       });
   }
@@ -62,32 +64,31 @@ export class TrackPageComponent implements OnInit {
         this.lyrics = lyricsPara.split('\n');
       });
   }
-  loadRatingForThisSong(trackId) {
+  loadRatingForThisSong() {
     this.trackService.findRatedSongsForUser()
       .then((result) => {
         if (result) {
-          const ratingForThisSong = result.filter(x => x.track_id === trackId);
+          const ratingForThisSong = result.filter(x => x.track_id === this.trackId);
           if (ratingForThisSong.length > 0) {
             this.liked = String(ratingForThisSong[0].rating) === 'like';
           }
         }
       });
   }
-  findOrCreateSong(trackId) {
+  findOrCreateSong(trackId,trackName) {
     this.trackService
       .findTrackById(trackId)
       .then((result) => {
         if (result.status !== 200) {
-          console.log('did not found song');
-          return this.trackService.createTrack(trackId);
+          console.log('did not found song, so creating');
+          return this.trackService.createTrack(trackId, trackName);
         }
       })
       .then((createdSong) => {
         if (createdSong) {
-          return this.loadRatingForThisSong(trackId);
+          console.log(createdSong);
         }
       })
-      .then((result) => console.log(result))
       .catch((error) => console.log(error));
   }
   ngOnInit() {
@@ -96,15 +97,9 @@ export class TrackPageComponent implements OnInit {
       .then((result) => {
         if (result.status === 200) {
           this.isUserLoggedIn = true;
-          return this.findOrCreateSong(this.trackId);
+          return this.loadRatingForThisSong();
         } else {
           this.isUserLoggedIn = false;
-          throw new Error('No user logged in');
-        }
-      })
-      .then((result) => {
-        if (result) {
-            console.log(result);
         }
       })
       .catch(() => {

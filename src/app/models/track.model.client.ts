@@ -7,5 +7,6 @@ export class Track {
   album_id: number;
   track_length: number;
   album_coverart_100x100: string;
+  rating: string;
 }
 
