@@ -23,8 +23,6 @@ const appRoutes: Routes = [
   { path: 'artist/:artistId', component: ArtistPageComponent},
   { path: 'album/:albumId', component: AlbumPageComponent},
   { path: 'track/:trackId', component: TrackPageComponent},
-  { path: 'rated/songs', component: RatedSongsComponent},
-  { path: 'rated/playlist', component: PlaylistsPageComponent},
   { path: '**', component: HomePageComponent} // last
 ];
 
