@@ -13,3 +13,5 @@ export const LOGOUT_API_URL =
 
 export const SONG_API_URL =
   'https://lyricpedia-server.herokuapp.com/api/song';
+export const USER_SONG_API_URL =
+  'https://lyricpedia-server.herokuapp.com/api/user/song';

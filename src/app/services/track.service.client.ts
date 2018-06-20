@@ -49,7 +49,7 @@ export class TrackServiceClient {
   }
 
   findRatedSongsForUser() {
-    return fetch('http://localhost:4000/api/user/song', {
+    return fetch(constants.USER_SONG_API_URL, {
       credentials: 'include',
       method: 'get',
       headers: {
