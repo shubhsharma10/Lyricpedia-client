@@ -18,6 +18,7 @@ import {NgxDatatableModule} from '@swimlane/ngx-datatable';
 import { ArtistPageComponent } from './artist-page/artist-page.component';
 import { AlbumPageComponent } from './album-page/album-page.component';
 import { TrackPageComponent } from './track-page/track-page.component';
+import {TrackServiceClient} from './services/track.service.client';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { TrackPageComponent } from './track-page/track-page.component';
   providers: [
     UserServiceClient,
     DataService,
-    MusixMatchAPIServiceClient
+    MusixMatchAPIServiceClient,
+    TrackServiceClient
   ],
   bootstrap: [AppComponent]
 })
