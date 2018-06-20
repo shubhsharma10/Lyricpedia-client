@@ -8,6 +8,11 @@
   border-radius: 5px;
   padding: 2px;
 }
+.container {
+  overflow-y: auto;
+  height: 300px;
+  margin-top: 10px;
+}
 .list-group-item:nth-of-type(even){
   background-color: white;
 }
