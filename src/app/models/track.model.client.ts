@@ -8,5 +8,8 @@ export class Track {
   track_length: number;
   album_coverart_100x100: string;
   rating: string;
+  likes: number;
+  dislikes: number;
+  listOfUsers = [];
 }
 

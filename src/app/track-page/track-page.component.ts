@@ -24,6 +24,7 @@ export class TrackPageComponent implements OnInit {
   lyrics: string;
   liked = false;
   isUserLoggedIn = false;
+  userCode = 0;
   user: User = new User();
   setParams(params) {
     if (params['trackId']) {
@@ -34,7 +35,7 @@ export class TrackPageComponent implements OnInit {
   }
   handleRating() {
     this.liked = !this.liked;
-    console.log('going to update')
+    console.log('going to update');
     if (this.liked) {
       this.trackService
         .updateSong(this.trackId, 'like')
@@ -75,7 +76,7 @@ export class TrackPageComponent implements OnInit {
         }
       });
   }
-  findOrCreateSong(trackId,trackName) {
+  findOrCreateSong(trackId, trackName) {
     this.trackService
       .findTrackById(trackId)
       .then((result) => {
@@ -97,10 +98,21 @@ export class TrackPageComponent implements OnInit {
       .then((result) => {
         if (result.status === 200) {
           this.isUserLoggedIn = true;
-          return this.loadRatingForThisSong();
+          return this.userService.profile();
         } else {
           this.isUserLoggedIn = false;
         }
+      })
+      .then((result) => {
+        this.user = result as User;
+        if (this.user.userType === 'User') {
+          this.userCode = 1;
+        } else if (this.user.userType === 'Premium') {
+          this.userCode = 2;
+        } else if (this.user.userType === 'Admin') {
+          this.userCode = 3;
+        }
+        return this.loadRatingForThisSong();
       })
       .catch(() => {
         console.log('No user logged in');

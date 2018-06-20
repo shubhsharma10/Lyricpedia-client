@@ -11,7 +11,7 @@
         <div class="col">
           <div class="row">
             <h2>{{track.track_name}}</h2>
-            <div *ngIf="isUserLoggedIn; then UserTemplate"></div>
+            <div *ngIf="userCode == 1 || userCode == 2; then UserTemplate"></div>
             <ng-template #UserTemplate>
               <i (click)="handleRating()" [ngClass]="liked === true ? 'fa-thumbs-up' : 'fa-thumbs-down'"
                  class="fa fa-2x ml-2"></i>

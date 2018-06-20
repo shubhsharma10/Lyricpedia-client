@@ -75,4 +75,9 @@ export class UserServiceClient {
       }
     });
   }
+
+  findAllUsers() {
+    return fetch(constants.USER_API_URL)
+      .then(response => response.json());
+  }
 }

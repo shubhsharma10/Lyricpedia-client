@@ -9,12 +9,14 @@ import {ArtistPageComponent} from './artist-page/artist-page.component';
 import {AlbumPageComponent} from './album-page/album-page.component';
 import {TrackPageComponent} from './track-page/track-page.component';
 import {RatedSongsComponent} from './rated-songs/rated-songs.component';
+import {AdminPageComponent} from './admin-page/admin-page.component';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full'},
   { path: 'home', component: HomePageComponent},
   { path: 'result', component: ResultComponent},
   { path: 'login', component: LoginComponent},
+  { path: 'admin', component: AdminPageComponent},
   { path: 'profile', component: ProfileComponent},
   { path: 'register', component: RegisterComponent},
   { path: 'artist/:artistId', component: ArtistPageComponent},

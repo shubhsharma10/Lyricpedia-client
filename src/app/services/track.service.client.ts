@@ -58,4 +58,9 @@ export class TrackServiceClient {
     })
       .then(response => response.json());
   }
+
+  findAllSongs() {
+    return fetch(constants.SONG_API_URL)
+      .then(response => response.json())
+  }
 }
