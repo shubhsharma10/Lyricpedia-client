@@ -17,10 +17,27 @@ body, html {
 }
 
 .list-group-item:nth-of-type(even){
-  background-color: white;
+  background-color: aqua;
+  cursor: pointer;
 }
 .list-group-item:nth-of-type(odd){
   background-color: #f2f2f2;
+  cursor: pointer;
+}
+.list-group-item:hover{
+  background-color: lightblue;
+}
+
+.panel:nth-of-type(even){
+  background-color: aqua;
+  cursor: pointer;
+}
+.panel:nth-of-type(odd){
+  background-color: #f2f2f2;
+  cursor: pointer;
+}
+.panel:hover{
+  background-color: lightblue;
 }
 
 thead tr {

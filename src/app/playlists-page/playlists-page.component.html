@@ -4,7 +4,7 @@
     <div class="panel panel-primary" >
       <div class="panel-heading">
         <label class="panel-title">
-          <a (click)="setSelectedPlaylist(playlist.name)"
+          <i class="fa fa-list mx-1"></i><a (click)="setSelectedPlaylist(playlist.name)"
              data-toggle="collapse"
              [attr.data-parent]="'#accordion_' + i"
              [attr.href]="'#collapseOne_' + i">
@@ -16,7 +16,7 @@
         <div class="panel-body">
             <li class="list-group-item list-group-item-action flex-column align-items-start" *ngFor="let track of playlist.tracks">
               <div class="d-flex w-100 justify-content-between flex-nowrap" >
-                  <a class="mx-2" routerLink="/track/{{track.track_id}}"><label>{{track.track_name}}</label></a>
+                  <a class="mx-2" routerLink="/track/{{track.track_id}}"><i class="fa fa-music mr-1"></i><label>{{track.track_name}}</label></a>
                   <i class="fa fa-times"></i>
               </div>
             </li>
