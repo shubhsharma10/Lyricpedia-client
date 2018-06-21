@@ -8,9 +8,3 @@
 .fa-thumbs-up {
   color: blue;
 }
-
-.container {
-  overflow-y: auto;
-  height: 300px;
-  margin-top: 10px;
-}

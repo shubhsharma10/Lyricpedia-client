@@ -1,20 +1,12 @@
 <app-top-navbar></app-top-navbar>
-<div class="container my-5 py-5">
+<div class="container-fluid my-1 py-5">
   <div class="row">
-    <div *ngIf="userNotLoggedIn; then UserNotLoggedInAlert"></div>
-    <ng-template #UserNotLoggedInAlert>
-      <div class="alert alert-info" role="alert">
-        No user is logged in. Please login first!
-      </div>
-    </ng-template>
-    <h1>Profile</h1>
-  </div>
-  <div class="row">
-    <div class="col-xs-6 col-md-4 profile-container">
+    <div class="col-xs-12 col-sm-6 custom-list-box-400">
+      <label>Profile</label>
       <input [(ngModel)]="user.username"
              [disabled] = "userNotLoggedIn"
              placeholder="username"
-             class="form-control my-2"/>
+             class="form-control mb-2"/>
       <input [(ngModel)]="user.firstName"
              [disabled] = "userNotLoggedIn"
              placeholder="first name"
@@ -42,23 +34,21 @@
       </button>
 
       <div class="d-flex justify-content-between">
-        <button routerLink="/home" class="btn btn-outline-primary">Home</button>
+        <button routerLink="/home" class="btn btn-primary">Home</button>
         <div *ngIf="userCode === 3; then AdminPageLink"></div>
         <ng-template #AdminPageLink>
-          <button routerLink="/admin" class="btn btn-outline-primary">Admin</button>
+          <button routerLink="/admin" class="btn btn-primary">Admin</button>
         </ng-template>
-        <button [disabled] = "userNotLoggedIn" (click)="logout()" class="btn btn-outline-danger">Logout</button>
+        <button [disabled] = "userNotLoggedIn" (click)="logout()" class="btn btn-danger">Logout</button>
       </div>
     </div>
-    <div class="col-xs-6 col-md-8">
-      <div class="col">
-        <div *ngIf="userCode === 1 || userCode === 2 ; then SongsAndPlaylistsPageLink"></div>
-        <ng-template #SongsAndPlaylistsPageLink>
-          <app-rated-songs></app-rated-songs>
-          <app-playlists-page></app-playlists-page>
-        </ng-template>
-      </div>
+    <div class="col-xs-12 col-sm-6 custom-list-box-400">
+      <app-rated-songs></app-rated-songs>
     </div>
+    <div class="col-xs-12 col-sm-6 custom-list-box-400">
+      <app-playlists-page></app-playlists-page>
+    </div>
+    <!--<div *ngIf="userCode === 1 || userCode === 2 ; then SongsAndPlaylistsPageLink"></div>-->
   </div>
 </div>
 <app-bottom-navbar></app-bottom-navbar>

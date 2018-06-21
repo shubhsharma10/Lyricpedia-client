@@ -1,3 +1,7 @@
 .custom-navbar-bg{
   background-color: aqua;
 }
+.navbar{
+  margin-top: 0!important;
+  padding-top: 5px !important;
+}

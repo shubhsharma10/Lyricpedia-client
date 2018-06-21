@@ -1,1 +1,45 @@
 /* You can add global styles to this file, and also import other style files */
+body, html {
+  height: 100%;
+  /* The image used */
+  background: url('./assets/bg1.jpg') center no-repeat fixed #464646;
+  background-size: cover;
+  position: relative;
+}
+
+.custom-list-box-400 {
+  margin-bottom: 20px;
+  margin-top: 2px;
+}
+.custom-list-box-400 ul{
+  overflow-y: auto;
+  height: 400px;
+}
+
+.list-group-item:nth-of-type(even){
+  background-color: white;
+}
+.list-group-item:nth-of-type(odd){
+  background-color: #f2f2f2;
+}
+
+thead tr {
+  background-color: slategrey;
+}
+th, td {
+  text-align: left;
+  padding: 15px;
+  border-bottom: 2px solid #ddd;
+}
+
+tr {
+  background-color: white;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+tr:hover {
+  background-color: lightblue;
+}
