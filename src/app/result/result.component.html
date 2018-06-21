@@ -1,5 +1,12 @@
-<app-top-navbar (messageEvent)="receiveMessage($event)"></app-top-navbar>
+<app-top-navbar></app-top-navbar>
 <div class="container py-5">
+  <div class="Search pt-5 pb-1">
+    <input (keyup.enter)="handleEnter()"
+           type="search"
+           class="py-2"
+           placeholder="Type lyrics here.."
+           [(ngModel)]="userInput.input"/>
+  </div>
   <div class="row justify-content-center py-2">
     <table>
       <thead>

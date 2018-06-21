@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top container-fluid">
+<nav class="navbar navbar-expand-lg navbar-light custom-nav-bg fixed-top container-fluid">
   <a class="navbar-brand LandingText" routerLink="/home">lyricpedia</a>
   <div *ngIf="isUserLoggedIn; then LoggedInUserTemplate else NotLoggedInUserTemplate"></div>
   <ng-template #NotLoggedInUserTemplate>
@@ -6,46 +6,13 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
-      <div *ngIf="isResultPage; then SearchBarTemplate else ButtonsTemplate"></div>
-      <ng-template #ButtonsTemplate>
-        <a routerLink="/login" class="btn btn-outline-primary mr-2">Login</a>
-        <a routerLink="/register" class="btn btn-outline-primary">Register</a>
-      </ng-template>
-      <ng-template #SearchBarTemplate>
-      <div class="Search ml-auto">
-        <input (keyup.enter)="handleEnter()"
-               type="search"
-               class="mx-2"
-               placeholder="Type lyrics here.."
-               [(ngModel)]="userInput.input"/>
-        <a routerLink="/login" class="btn btn-outline-primary mr-2">Login</a>
-        <a routerLink="/register" class="btn btn-outline-primary">Register</a>
-      </div>
-      </ng-template>
+      <a routerLink="/login" class="btn btn-sm btn-outline-success mr-2">Login</a>
+      <a routerLink="/register" class="btn btn-sm btn-outline-success">Register</a>
     </div>
   </ng-template>
   <ng-template #LoggedInUserTemplate>
-    <div *ngIf="isResultPage; then UserSearchBarTemplate else UserNameTemplate"></div>
-    <ng-template #UserNameTemplate>
-      <div class="ml-auto">
-        <a routerLink="/profile" class="user-profile mx-2 pb-3 LandingTextUserName">{{user.username}}</a>
-      </div>
-    </ng-template>
-    <ng-template #UserSearchBarTemplate>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#UserSearchBar" aria-controls="UserSearchBar" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse justify-content-end" id="UserSearchBar">
-        <div class="row">
-          <div class="Search">
-            <input (keyup.enter)="handleEnter()"
-                   type="search"
-                   placeholder="Type lyrics here.."
-                   [(ngModel)]="userInput.input"/>
-          </div>
-          <a routerLink="/profile" class="user-profile ml-1 pb-2 LandingTextUserName">{{user.username}}</a>
-        </div>
-      </div>
-    </ng-template>
+    <div class="ml-auto">
+      <a routerLink="/profile" class="user-profile mx-2 pb-3 LandingTextUserName">{{user.username}}</a>
+    </div>
   </ng-template>
 </nav>

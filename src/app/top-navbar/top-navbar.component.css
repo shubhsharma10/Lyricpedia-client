@@ -1,54 +1,15 @@
 .LandingText {
   color: black;
   font-family: "HelvLight";
-  font-weight: 500;
-  font-size: 30px;
+  font-weight: 300;
+  font-size: 20px;
+}
+.custom-nav-bg {
+  background-color: aqua;
 }
 .LandingTextUserName {
   color: black;
   font-family: "HelvLight";
-  font-weight: 500;
-  font-size: 20px;
-}
-.Search {
-  -webkit-box-align: start;
-  -webkit-align-items: flex-start;
-  -ms-flex-align: start;
-  align-items: flex-start;
-  -webkit-box-pack: start;
-  -webkit-justify-content: flex-start;
-  -ms-flex-pack: start;
-  justify-content: flex-start;
-  width: 70%;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: start;
-  -webkit-justify-content: flex-start;
-  -ms-flex-pack: start;
-  justify-content: flex-start;
-  pointer-events: none;
-}
-.Search input{
-  font-family: "Arial", sans-serif;
   font-weight: 300;
-  font-size: 14px;
-  height: 39px;
-  width: 100%;
-  background: transparent;
-  color: black;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  border: 1px solid black;
-  outline: none;
-  border-radius: 37px;
-  padding: 0 10px;
-  pointer-events: all;
-  -webkit-transition: border .25s ease, width .125s ease .125s;
-  transition: border .25s ease, width .125s ease .125s;
-}
-.Search input:focus {
-  border: 2px solid #e50914;
+  font-size: 15px;
 }

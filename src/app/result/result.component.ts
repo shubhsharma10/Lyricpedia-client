@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {MusixMatchAPIServiceClient} from '../services/musixmatch.service.client';
+import {UserInput} from '../models/user.input';
+import {DataService} from '../services/data.sevice';
 
 @Component({
   selector: 'app-result',
@@ -7,8 +9,12 @@ import {MusixMatchAPIServiceClient} from '../services/musixmatch.service.client'
   styleUrls: ['./result.component.css']
 })
 export class ResultComponent implements OnInit {
+  userInput: UserInput = {
+    input: ''
+  };
   tracks = [];
-  constructor(private musicService: MusixMatchAPIServiceClient) {
+  constructor(private musicService: MusixMatchAPIServiceClient,
+              private dataService: DataService) {
   }
   searchForTracks(word) {
     this.musicService
@@ -18,11 +24,15 @@ export class ResultComponent implements OnInit {
         this.tracks = tracks.map(x => x.track);
       });
   }
-  receiveMessage($event) {
-    const userInput = $event;
-    if (userInput) {
-      this.searchForTracks(userInput);
+  handleEnter() {
+    this.searchForTracks(this.userInput.input);
+  }
+  ngOnInit() {
+    if (this.dataService.userInput) {
+      this.userInput = this.dataService.userInput;
+      this.handleEnter();
+    } else {
+      this.userInput = new UserInput();
     }
   }
-  ngOnInit() {}
 }
