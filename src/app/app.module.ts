@@ -25,6 +25,10 @@ import { PlaylistsPageComponent } from './playlists-page/playlists-page.componen
 import { AllSongsComponent } from './all-songs/all-songs.component';
 import { AllPlaylistsComponent } from './all-playlists/all-playlists.component';
 import { PlaylistPageComponent } from './playlist-page/playlist-page.component';
+import { PublicProfileComponent } from './public-profile/public-profile.component';
+import { FollowersComponent } from './followers/followers.component';
+import { FollowingComponent } from './following/following.component';
+import { UserListComponent } from './user-list/user-list.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +48,11 @@ import { PlaylistPageComponent } from './playlist-page/playlist-page.component';
     PlaylistsPageComponent,
     AllSongsComponent,
     AllPlaylistsComponent,
-    PlaylistPageComponent
+    PlaylistPageComponent,
+    PublicProfileComponent,
+    FollowersComponent,
+    FollowingComponent,
+    UserListComponent
   ],
   imports: [
     BrowserModule,

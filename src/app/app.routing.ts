@@ -12,6 +12,7 @@ import {RatedSongsComponent} from './rated-songs/rated-songs.component';
 import {AdminPageComponent} from './admin-page/admin-page.component';
 import {PlaylistsPageComponent} from './playlists-page/playlists-page.component';
 import {PlaylistPageComponent} from './playlist-page/playlist-page.component';
+import {PublicProfileComponent} from './public-profile/public-profile.component';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -25,6 +26,7 @@ const appRoutes: Routes = [
   { path: 'album/:albumId', component: AlbumPageComponent},
   { path: 'track/:trackId', component: TrackPageComponent},
   { path: 'playlist/:playlistId', component: PlaylistPageComponent},
+  { path: 'user/:userId', component: PublicProfileComponent},
   { path: '**', component: HomePageComponent} // last
 ];
 
