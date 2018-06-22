@@ -2,7 +2,7 @@
 body, html {
   height: 100%;
   /* The image used */
-  background: url('./assets/bg1.jpg') center no-repeat fixed #464646;
+  background: url('./assets/alt1.jpg') center no-repeat fixed #464646;
   background-size: cover;
   position: relative;
 }
