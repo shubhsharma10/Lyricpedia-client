@@ -40,6 +40,18 @@
     <div class="col-xs-12 col-sm-6 custom-list-box-400">
       <app-user-list></app-user-list>
     </div>
+    <div *ngIf="userCode === 1 || userCode === 2 ; then FollowingUsers"></div>
+    <ng-template #FollowingUsers>
+      <div class="col-xs-12 col-sm-6 custom-list-box-400">
+        <app-following></app-following>
+      </div>
+    </ng-template>
+    <div *ngIf="userCode === 1 || userCode === 2 ; then Followers"></div>
+      <ng-template #Followers>
+        <div class="col-xs-12 col-sm-6 custom-list-box-400">
+          <app-followers></app-followers>
+        </div>
+      </ng-template>
     <div class="col-xs-12 col-sm-6 custom-list-box-400">
       <div *ngIf="userCode === 1 || userCode === 2 ; then UserSongs"></div>
       <ng-template #UserSongs>

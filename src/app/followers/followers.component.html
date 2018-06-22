@@ -1,3 +1,17 @@
-<p>
-  followers works!
-</p>
+<div class="borderedContainer">
+  <div class="title-label">
+    <h6 class="boxLabel">Followers</h6>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item list-group-item-action flex-column align-items-start" *ngFor="let userEntry of currentUser.followers">
+      <div class="d-flex w-100 justify-content-left flex-nowrap" >
+        <a class="mb-1 mx-2" routerLink="/user/{{userEntry.userId}}">
+          <i class="fa fa-user fa-1x mr-2"></i>
+          <label>
+            {{userEntry.username}}
+          </label>
+        </a>
+      </div>
+    </li>
+  </ul>
+</div>
