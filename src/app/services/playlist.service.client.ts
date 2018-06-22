@@ -26,12 +26,11 @@ export class PlaylistServiceClient {
       .then(response => response.json());
   }
 
-  addToPlaylist(playlistName, trackId, trackName) {
+  addToPlaylist(playlistId, trackId, trackName) {
     const playlistData = {
-      playlistName: playlistName,
       trackId: trackId,
       trackName: trackName };
-    return fetch(constants.ADD_TO_PLAYLIST_API_URL, {
+    return fetch(constants.DIRECT_PLAYLIST_API_URL.replace('PID', playlistId) + '/add', {
       body: JSON.stringify(playlistData),
       credentials: 'include', // include, same-origin, *omit
       method: 'put',

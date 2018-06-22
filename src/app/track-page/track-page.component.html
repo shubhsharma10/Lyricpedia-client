@@ -25,7 +25,7 @@
                     <div class="dropdown-divider"></div>
                     <button class="dropdown-item"
                             *ngFor="let playlist of playlists"
-                            (click)="addToPlaylist(playlist.name)">
+                            (click)="addToPlaylist(playlist._id)">
                       {{playlist.name}}
                     </button>
                     </div>

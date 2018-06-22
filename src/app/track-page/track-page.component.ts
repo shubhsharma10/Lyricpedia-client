@@ -59,10 +59,10 @@ export class TrackPageComponent implements OnInit {
       .createAndAddToPlaylist(this.newPlaylist.name, this.trackId, this.track.track_name)
       .then((result) => console.log(result));
   }
-  addToPlaylist(playlistName) {
-    console.log('asking to add to playlist ' + playlistName);
+  addToPlaylist(playlistId) {
+    console.log('asking to add to playlist ' + playlistId);
     this.playlistService
-      .addToPlaylist(playlistName, this.trackId, this.track.track_name)
+      .addToPlaylist(playlistId, this.trackId, this.track.track_name)
       .then((result) => console.log(result));
   }
   loadTrackInfo(trackId) {

@@ -16,6 +16,7 @@ export class PlaylistPageComponent implements OnInit {
   }
   playlistId: number;
   playlist: Playlist = new Playlist();
+  currentName: string;
   setParams(params) {
     if (params['playlistId']) {
       this.playlistId = params['playlistId'];
@@ -23,8 +24,11 @@ export class PlaylistPageComponent implements OnInit {
     }
   }
   renamePlaylist() {
-      this.playlistService.renamePlaylist(this.playlistId, this.playlist.name)
-        .then((result) => this.playlist = result as Playlist)
+      this.playlistService.renamePlaylist(this.playlistId, this.currentName)
+        .then((result) => {
+          console.log(result);
+          this.loadPlaylist(this.playlistId);
+        })
         .catch((error) => console.log(error));
   }
   removeSongFromPlaylist(playlistId, trackId) {
@@ -38,7 +42,10 @@ export class PlaylistPageComponent implements OnInit {
   loadPlaylist(playlistId) {
     this.playlistService
       .findPlaylistById(playlistId)
-      .then((playlist) => this.playlist = playlist as Playlist)
+      .then((playlist) => {
+        this.playlist = playlist as Playlist;
+        this.currentName = this.playlist.name;
+      })
       .catch((error) => console.log(error));
   }
   ngOnInit() {
