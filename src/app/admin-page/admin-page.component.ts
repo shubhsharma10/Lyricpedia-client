@@ -11,18 +11,9 @@ import {Track} from '../models/track.model.client';
 })
 export class AdminPageComponent implements OnInit {
 
-  constructor(private userService: UserServiceClient,
-              private trackService: TrackServiceClient) { }
+  constructor(private userService: UserServiceClient) { }
   users: User[] = [];
-  tracks: Track[] = [];
-  loadAllTracks() {
-    this.trackService.findAllSongs()
-      .then((result) =>
-        this.tracks = result as Track[])
-      .catch((error) =>
-        console.log(error)
-      );
-  }
+
   loadAllUsers() {
     this.userService.findAllUsers()
       .then((users) =>
@@ -34,7 +25,6 @@ export class AdminPageComponent implements OnInit {
   }
   ngOnInit() {
     this.loadAllUsers();
-    this.loadAllTracks();
   }
 
 }

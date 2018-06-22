@@ -1,12 +1,7 @@
 <app-top-navbar></app-top-navbar>
 <div class="container-fluid py-5">
   <div class="row py-5 px-5">
-    <div class="col-xs-6 col-md-4 pt-2">
-      <div class="card" style="width: 15rem;">
-        <img class="card-img-top" src={{track.album_coverart_100x100}} alt="album"/>
-      </div>
-    </div>
-    <div class="col-xs-6 col-md-8 pt-2">
+    <div class="cotainer-fluid pt-2">
       <div class="row">
         <div class="col">
             <h2>{{track.track_name}}</h2>
@@ -42,9 +37,11 @@
       <div class="row pt-3">
         <div class="col">
             <h5>Lyrics:</h5>
-            <a class="list-group-item flex-column align-items-start" *ngFor="let lyric of lyrics">
-              <a>{{lyric}}</a>
-            </a>
+            <ul>
+              <li class="flex-column align-items-start" *ngFor="let lyric of lyrics">
+                <label>{{lyric}}</label>
+              </li>
+            </ul>
         </div>
       </div>
     </div>

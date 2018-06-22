@@ -40,6 +40,17 @@ body, html {
   background-color: lightblue;
 }
 
+.fa-times {
+  color: red;
+}
+a:hover{
+  cursor: pointer;
+}
+a,
+a label {
+  cursor: pointer;
+}
+
 thead tr {
   background-color: slategrey;
 }

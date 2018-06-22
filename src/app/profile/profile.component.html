@@ -43,12 +43,25 @@
       </div>
     </div>
     <div class="col-xs-12 col-sm-6 custom-list-box-400">
-      <app-rated-songs></app-rated-songs>
+      <div *ngIf="userCode === 1 || userCode === 2 ; then UserSongs"></div>
+      <ng-template #UserSongs>
+        <app-rated-songs></app-rated-songs>
+      </ng-template>
+      <div *ngIf="userCode === 3 ; then AdminSongs"></div>
+      <ng-template #AdminSongs>
+        <app-all-songs></app-all-songs>
+      </ng-template>
     </div>
     <div class="col-xs-12 col-sm-6 custom-list-box-400">
-      <app-playlists-page></app-playlists-page>
+      <div *ngIf="userCode === 1 || userCode === 2 ; then UserPlayList"></div>
+      <ng-template #UserPlayList>
+        <app-playlists-page></app-playlists-page>
+      </ng-template>
+      <div *ngIf="userCode === 3 ; then AdminPlayList"></div>
+      <ng-template #AdminPlayList>
+        <app-all-playlists></app-all-playlists>
+      </ng-template>
     </div>
-    <!--<div *ngIf="userCode === 1 || userCode === 2 ; then SongsAndPlaylistsPageLink"></div>-->
   </div>
 </div>
 <app-bottom-navbar></app-bottom-navbar>
