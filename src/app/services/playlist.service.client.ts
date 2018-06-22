@@ -38,6 +38,13 @@ export class PlaylistServiceClient {
 
   }
 
+  deletePlaylist(playlistId) {
+    return fetch(constants.DIRECT_PLAYLIST_API_URL.replace('PID', playlistId), {
+      credentials: 'include', // include, same-origin, *omit
+      method: 'delete'
+    });
+  }
+
   findPlaylistsForUser() {
     return fetch(constants.USER_PLAYLIST_API_URL, {
       credentials: 'include',

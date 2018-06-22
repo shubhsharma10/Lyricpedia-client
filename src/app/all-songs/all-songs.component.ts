@@ -19,7 +19,17 @@ export class AllSongsComponent implements OnInit {
         console.log(error)
       );
   }
-
+  deleteSong(trackId) {
+    this.trackService
+      .deleteSong(trackId)
+      .then((result) => {
+        if (result.status === 200) {
+          console.log(result);
+          return this.loadAllTracks();
+        }
+      })
+      .catch((error) => console.log(error));
+  }
   ngOnInit() {
     this.loadAllTracks();
   }

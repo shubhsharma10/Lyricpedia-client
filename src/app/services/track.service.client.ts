@@ -34,6 +34,13 @@ export class TrackServiceClient {
     });
   }
 
+  deleteSong(trackId) {
+    return fetch(constants.DIRECT_SONG_API_URL.replace('TID', trackId), {
+      credentials: 'include', // include, same-origin, *omit
+      method: 'delete'
+    });
+  }
+
   updateSong(songId, rating) {
     const ratingObj = {
       rating: rating
