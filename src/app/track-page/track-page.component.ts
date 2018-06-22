@@ -75,8 +75,6 @@ export class TrackPageComponent implements OnInit {
       const message = (result as any).message;
       if (message.header.status_code === 200) {
         this.track = (result as any).message.body.track as Track;
-        this.track.likes = 0;
-        this.track.dislikes = 0;
         return this.findOrCreateSong(trackId, this.track.track_name);
       }
       });
@@ -117,14 +115,23 @@ export class TrackPageComponent implements OnInit {
     this.trackService
       .findTrackById(trackId)
       .then((result) => {
+        console.log(result);
+        console.log(result.status);
         if (result.status !== 200) {
           console.log('did not found song, so creating');
           return this.trackService.createTrack(trackId, trackName);
+        } else {
+          console.log('came here, i.e. found song ');
+          return result.json();
         }
       })
       .then((createdSong) => {
         if (createdSong) {
           console.log(createdSong);
+          const track = createdSong as Track;
+          this.track.likes = track.likes || 0;
+          this.track.dislikes = track.dislikes || 0;
+          this.track.listOfUsers = track.listOfUsers;
         }
       })
       .catch((error) => console.log(error));

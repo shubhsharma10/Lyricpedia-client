@@ -14,7 +14,7 @@ export class TrackServiceClient {
   // }
 
   findTrackById(trackId) {
-    return fetch(constants.SONG_API_URL + '/' + trackId);
+    return fetch(constants.DIRECT_SONG_API_URL.replace('SID', trackId));
   }
 
   createTrack(trackId, trackName) {

@@ -16,7 +16,7 @@ export const LOGOUT_API_URL =
 export const SONG_API_URL =
   'https://lyricpedia-server.herokuapp.com/api/song';
 export const DIRECT_SONG_API_URL =
-  'https://lyricpedia-server.herokuapp.com/api/song/:SID';
+  'https://lyricpedia-server.herokuapp.com/api/song/SID';
 export const USER_SONG_API_URL =
   'https://lyricpedia-server.herokuapp.com/api/user/song';
 export const PLAYLIST_API_URL =
