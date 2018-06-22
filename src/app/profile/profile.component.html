@@ -2,36 +2,40 @@
 <div class="container-fluid my-1 py-5">
   <div class="row">
     <div class="col-xs-12 col-sm-6 custom-list-box-400">
-      <label>Profile</label>
-      <input [(ngModel)]="user.username"
-             [disabled] = "userNotLoggedIn"
-             placeholder="username"
-             class="form-control mb-2"/>
-      <input [(ngModel)]="user.firstName"
-             [disabled] = "userNotLoggedIn"
-             placeholder="first name"
-             class="form-control my-2"/>
-      <input [(ngModel)]="user.lastName"
-             [disabled] = "userNotLoggedIn"
-             placeholder="lastName"
-             class="form-control my-2"/>
-      <input [(ngModel)]="user.email"
-             [disabled] = "userNotLoggedIn"
-             placeholder="email"
-             class="form-control my-2"/>
-      <input [(ngModel)]="user.phoneNumber"
-             [disabled] = "userNotLoggedIn"
-             placeholder="333-222-3232"
-             class="form-control my-2"/>
-      <input [(ngModel)]="user.address"
-             [disabled] = "userNotLoggedIn"
-             placeholder="X Street,Boston,MA"
-             class="form-control my-2"/>
-      <button (click)="update(user)"
-              [disabled] = "userNotLoggedIn"
-              class="btn btn-primary btn-block my-2">
-        Update
-      </button>
+      <div class="borderedContainer">
+        <div class="title-label">
+          <h6 class="boxLabel">Profile</h6>
+        </div>
+        <input [(ngModel)]="user.username"
+               [disabled] = "userNotLoggedIn"
+               placeholder="username"
+               class="form-control mb-2"/>
+        <input [(ngModel)]="user.firstName"
+               [disabled] = "userNotLoggedIn"
+               placeholder="first name"
+               class="form-control my-2"/>
+        <input [(ngModel)]="user.lastName"
+               [disabled] = "userNotLoggedIn"
+               placeholder="lastName"
+               class="form-control my-2"/>
+        <input [(ngModel)]="user.email"
+               [disabled] = "userNotLoggedIn"
+               placeholder="email"
+               class="form-control my-2"/>
+        <input [(ngModel)]="user.phoneNumber"
+               [disabled] = "userNotLoggedIn"
+               placeholder="333-222-3232"
+               class="form-control my-2"/>
+        <input [(ngModel)]="user.address"
+               [disabled] = "userNotLoggedIn"
+               placeholder="X Street,Boston,MA"
+               class="form-control my-2"/>
+        <button (click)="update(user)"
+                [disabled] = "userNotLoggedIn"
+                class="btn btn-primary btn-block my-2">
+          Update
+        </button>
+      </div>
     </div>
     <div class="col-xs-12 col-sm-6 custom-list-box-400">
       <app-user-list></app-user-list>

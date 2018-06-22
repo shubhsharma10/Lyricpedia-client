@@ -1,5 +1,8 @@
-<label>Playlists:</label>
-<ul class="list-group list-group-flush">
+<div class="borderedContainer">
+  <div class="title-label">
+    <h6 class="boxLabel">Playlists</h6>
+  </div>
+  <ul class="list-group list-group-flush">
   <div class="panel-group py-1" [attr.id]="'accordion_' + i" *ngFor="let playlist of playlists; let i = index">
     <div class="panel panel-primary" >
       <div class="panel-heading">
@@ -30,3 +33,4 @@
     </div>
   </div>
 </ul>
+</div>

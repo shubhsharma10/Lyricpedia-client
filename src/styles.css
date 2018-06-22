@@ -71,3 +71,18 @@ tr:nth-child(even) {
 tr:hover {
   background-color: lightblue;
 }
+
+.borderedContainer {
+  border: 1px outset grey;
+  border-radius: 5px;
+  margin-top: 5px;
+  background-color: whitesmoke;
+}
+.title-label {
+  background-color: wheat;
+  height: 30px;
+}
+.boxLabel {
+  padding: 5px;
+
+}

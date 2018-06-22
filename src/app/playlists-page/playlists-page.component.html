@@ -1,5 +1,8 @@
-<label>Playlists:</label>
-<ul class="list-group list-group-flush">
+<div class="borderedContainer">
+  <div class="title-label">
+    <h6 class="boxLabel">Playlists:</h6>
+  </div>
+  <ul class="list-group list-group-flush">
   <div class="panel-group py-1" [attr.id]="'accordion_' + i" *ngFor="let playlist of playlists; let i = index">
     <div class="panel panel-primary" >
       <div class="panel-heading">
@@ -22,7 +25,7 @@
         <div class="panel-body">
             <li class="list-group-item list-group-item-action flex-column align-items-start" *ngFor="let track of playlist.tracks">
               <div class="d-flex w-100 justify-content-left flex-nowrap" >
-                  <a class="mx-2" routerLink="/track/{{track.track_id}}"><i class="fa fa-mu"></i><label>{{track.track_name}}</label></a>
+                  <a class="mx-2" routerLink="/track/{{track.track_id}}"><i class="fa fa-music mr-2"></i><label>{{track.track_name}}</label></a>
               </div>
             </li>
         </div>
@@ -30,4 +33,5 @@
     </div>
   </div>
 </ul>
+</div>
 
