@@ -108,22 +108,7 @@ export class TrackPageComponent implements OnInit {
       });
   }
   loadUserData() {
-    //this.loadRatingForThisSong();
     this.loadPlaylists();
-  }
-  loadRatingForThisSong() {
-    this.trackService.findRatedSongsForUser()
-      .then((result) => {
-        if (result) {
-          const ratingForThisSong = result.filter(x => x.track_id === this.trackId);
-          if (ratingForThisSong.length > 0) {
-            console.log(ratingForThisSong);
-            this.liked = String(ratingForThisSong[0].rating) === 'like';
-            this.track.likes = ratingForThisSong[0].likes;
-            this.track.dislikes = ratingForThisSong[0].dislikes;
-          }
-        }
-      });
   }
   loadPlaylists() {
     this.playlistService.findPlaylistsForUser()
@@ -170,6 +155,7 @@ export class TrackPageComponent implements OnInit {
           return this.userService.profile();
         } else {
           this.isUserLoggedIn = false;
+          this.userCode = 0;
         }
       })
       .then((result) => {
@@ -180,6 +166,8 @@ export class TrackPageComponent implements OnInit {
           this.userCode = 2;
         } else if (this.user.userType === 'Admin') {
           this.userCode = 3;
+        } else {
+          this.userCode = 0;
         }
         return this.loadUserData();
       })

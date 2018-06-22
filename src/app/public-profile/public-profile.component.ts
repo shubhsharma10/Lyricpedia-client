@@ -18,6 +18,7 @@ export class PublicProfileComponent implements OnInit {
   userNotLoggedIn = false;
   visitingUserId: number;
   isFollowing = false;
+  isCurrentUserTarget = false;
   vistingUser: User = new User();
   currentUser: User = new User();
   setParams(params) {
@@ -42,6 +43,11 @@ export class PublicProfileComponent implements OnInit {
         console.log(this.currentUser);
         if (this.currentUser) {
           const currFollowingUser = this.currentUser.following;
+          if (this.visitingUserId.toString() === this.currentUser._id) {
+            this.isCurrentUserTarget = true;
+          } else {
+            this.isCurrentUserTarget = false;
+          }
           for (let i = 0; i < currFollowingUser.length; i++) {
             if (currFollowingUser[i].userId === this.visitingUserId) {
               this.isFollowing = true;

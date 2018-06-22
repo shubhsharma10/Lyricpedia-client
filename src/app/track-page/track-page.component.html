@@ -6,7 +6,7 @@
         <div class="col">
             <h2>{{track.track_name}}</h2>
             <a routerLink="/artist/{{track.artist_id}}"><h4>{{track.artist_name}}</h4></a>
-            <div *ngIf="userCode == 1 || userCode == 2; then UserTemplate"></div>
+            <div *ngIf="userCode > 0; then UserTemplate"></div>
             <ng-template #UserTemplate>
               <div class="row pl-2">
                 <p class="mx-1"><span class="fa fa-thumbs-up smallIcon fa-fw"></span>{{track.likes}}</p>
@@ -15,7 +15,13 @@
                    class="fa fa-2x ml-2 largeIcon"></i>
               </div>
               <div class="row pl-3">
-                <button class="btn btn-info mr-2 my-1" data-toggle="modal" data-target="#submitTranslationModal">Submit Translation</button>
+
+                <!--Allow submitting translation only when only when premium or admin user is logged in-->
+                <div *ngIf="userCode == 2 || userCode == 3; then PremiumAdminUserAddTranslationTemplate"></div>
+                <ng-template #PremiumAdminUserAddTranslationTemplate>
+                  <button class="btn btn-info mr-2 my-1" data-toggle="modal" data-target="#submitTranslationModal">Submit Translation</button>
+                </ng-template>
+
                 <div class="btn-group dropright">
                   <button type="button" class="btn btn-success dropdown-toggle dropdown-toggle-split my-1"
                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -53,7 +59,10 @@
           </ul>
         </div>
       </div>
-      <div class="row py-3">
+      <!--Show translators only when premium or admin user is logged in-->
+      <div *ngIf="userCode == 2 || userCode == 3; then PremiumAdminUserViewTranslatorsTemplate"></div>
+      <ng-template #PremiumAdminUserViewTranslatorsTemplate>
+        <div class="row py-3">
         <div class="borderedContainer w-100">
           <div class="title-label">
             <h6 class="boxLabel">Translators:</h6>
@@ -72,6 +81,7 @@
           </ul>
         </div>
       </div>
+      </ng-template>
     </div>
   </div>
 
