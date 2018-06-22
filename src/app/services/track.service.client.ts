@@ -56,6 +56,20 @@ export class TrackServiceClient {
       .then(response => response.json());
   }
 
+  updateTranslation(songId, translation) {
+    const translationObj = {
+      translation: translation
+    };
+    return fetch(constants.TRANSLATION_API_URL.replace('SID', songId), {
+              body: JSON.stringify(translationObj),
+              credentials: 'include',
+              method: 'put',
+              headers: {
+                'content-type': 'application/json'
+              }
+          });
+  }
+
   findRatedSongsForUser() {
     return fetch(constants.USER_SONG_API_URL, {
       credentials: 'include',

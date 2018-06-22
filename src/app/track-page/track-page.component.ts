@@ -28,6 +28,8 @@ export class TrackPageComponent implements OnInit {
   liked = false;
   isUserLoggedIn = false;
   userCode = 0;
+  tempTranslation: string;
+  tempTranslationArray = [];
   user: User = new User();
   newPlaylist: Playlist = new Playlist();
   playlists: Playlist[] = [];
@@ -68,6 +70,24 @@ export class TrackPageComponent implements OnInit {
       .addToPlaylist(playlistId, this.trackId, this.track.track_name)
       .then((result) => console.log(result));
   }
+  submitTranslation() {
+    console.log(this.tempTranslation);
+    this.trackService.updateTranslation(this.trackId, this.tempTranslation)
+      .then((result) => {
+        if (result.status === 200) {
+          return result.json();
+        } else {
+          throw new Error('Translation submission failed');
+        }
+      })
+      .then((updatedSong) => {
+          this.track.translation = (updatedSong as Track).translation;
+          this.tempTranslation = this.track.translation;
+          this.tempTranslationArray = this.tempTranslation.split('\n');
+          this.track.lot = (updatedSong as Track).lot;
+      })
+      .catch((error) => console.log(error));
+  }
   loadTrackInfo(trackId) {
     this.musicService
       .getTrack(trackId)
@@ -88,7 +108,7 @@ export class TrackPageComponent implements OnInit {
       });
   }
   loadUserData() {
-    this.loadRatingForThisSong();
+    //this.loadRatingForThisSong();
     this.loadPlaylists();
   }
   loadRatingForThisSong() {
@@ -132,6 +152,11 @@ export class TrackPageComponent implements OnInit {
           this.track.likes = track.likes || 0;
           this.track.dislikes = track.dislikes || 0;
           this.track.listOfUsers = track.listOfUsers;
+          this.track.translation = track.translation;
+          this.track.lot = track.lot;
+          this.tempTranslation = this.track.translation;
+          this.tempTranslationArray = this.tempTranslation.split('\n');
+
         }
       })
       .catch((error) => console.log(error));

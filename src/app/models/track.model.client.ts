@@ -7,9 +7,11 @@ export class Track {
   album_id: number;
   track_length: number;
   album_coverart_100x100: string;
+  translation: string;
   rating: string;
   likes = 0;
   dislikes = 0;
   listOfUsers = [];
+  lot = [];
 }
 
