@@ -3,19 +3,26 @@
   <div class="panel-group py-1" [attr.id]="'accordion_' + i" *ngFor="let playlist of playlists; let i = index">
     <div class="panel panel-primary" >
       <div class="panel-heading">
-        <label class="panel-title" routerLink="/playlist/{{playlist._id}}">
-          <i class="fa fa-list mx-1"></i>
-          <a>
-            {{playlist.name}}
-          </a>
-        </label>
+        <div class="d-flex w-100 justify-content-between flex-nowrap">
+          <label class="panel-title">
+            <a (click)="setSelectedPlaylist(playlist.name)"
+               data-toggle="collapse"
+               [attr.data-parent]="'#accordion_' + i"
+               [attr.href]="'#collapseOne_' + i">
+              <i class="fa fa-list mx-1"></i>{{playlist.name}}
+            </a>
+          </label>
+          <span>
+              <a routerLink="/playlist/{{playlist._id}}" class="btn btn-sm btn-primary mx-2">Go to playlist</a>
+              <i (click)="deletePlaylist(playlist._id)" class="fa fa-times mr-1"></i>
+          </span>
+       </div>
       </div>
       <div [attr.id]="'collapseOne_' + i" class="panel-collapse collapse in">
         <div class="panel-body">
             <li class="list-group-item list-group-item-action flex-column align-items-start" *ngFor="let track of playlist.tracks">
-              <div class="d-flex w-100 justify-content-between flex-nowrap" >
-                  <a class="mx-2" routerLink="/track/{{track.track_id}}"><i class="fa fa-music mr-1"></i><label>{{track.track_name}}</label></a>
-                  <i class="fa fa-times"></i>
+              <div class="d-flex w-100 justify-content-left flex-nowrap" >
+                  <a class="mx-2" routerLink="/track/{{track.track_id}}"><i class="fa fa-mu"></i><label>{{track.track_name}}</label></a>
               </div>
             </li>
         </div>

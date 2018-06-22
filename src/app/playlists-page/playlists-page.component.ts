@@ -16,7 +16,7 @@ export class PlaylistsPageComponent implements OnInit {
     const index = this.playlists.findIndex(x => x.name === playlistName);
     this.selectedPlaylist = this.playlists[index];
   }
-  ngOnInit() {
+  loadPlaylists() {
     this.playlistService.findPlaylistsForUser()
       .then((playlists) => {
         console.log(playlists);
@@ -25,6 +25,18 @@ export class PlaylistsPageComponent implements OnInit {
       .catch((error) => {
         console.log(error);
       });
+  }
+  deletePlaylist(playlistId) {
+    this.playlistService
+      .deletePlaylist(playlistId)
+      .then((result) => {
+        console.log(result);
+        return this.loadPlaylists();
+      })
+      .catch((error) => console.log(error));
+  }
+  ngOnInit() {
+    this.loadPlaylists();
   }
 
 }

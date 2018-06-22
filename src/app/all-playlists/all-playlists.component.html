@@ -5,16 +5,16 @@
       <div class="panel-heading">
         <div class="d-flex w-100 justify-content-between flex-nowrap">
           <label class="panel-title">
-            <i class="fa fa-list mx-1"></i><a (click)="setSelectedPlaylist(playlist.name)"
+            <a (click)="setSelectedPlaylist(playlist.name)"
                                               data-toggle="collapse"
                                               [attr.data-parent]="'#accordion_' + i"
                                               [attr.href]="'#collapseOne_' + i">
-            {{playlist.name}}
-          </a>
+              <i class="fa fa-list mx-1"></i>{{playlist.name}}
+            </a>
           </label>
           <span>
-            <a routerLink="/playlist/{{playlist._id}}" class="btn btn-sm btn-primary mb-2 mx-1">Go to playlist</a>
-            <i (click)="deletePlaylist(playlist._id)" class="fa fa-times fa-2x mr-1"></i>
+            <a routerLink="/playlist/{{playlist._id}}" class="btn btn-sm btn-primary mx-2">Go to playlist</a>
+            <i (click)="deletePlaylist(playlist._id)" class="fa fa-times mr-1"></i>
           </span>
         </div>
       </div>

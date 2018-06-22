@@ -57,7 +57,10 @@ export class TrackPageComponent implements OnInit {
   createAndAddToPlaylist() {
     this.playlistService
       .createAndAddToPlaylist(this.newPlaylist.name, this.trackId, this.track.track_name)
-      .then((result) => console.log(result));
+      .then((result) => {
+        console.log(result);
+        this.loadPlaylists();
+      });
   }
   addToPlaylist(playlistId) {
     console.log('asking to add to playlist ' + playlistId);
