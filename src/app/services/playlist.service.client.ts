@@ -2,6 +2,11 @@ import * as constants from '../constants/index';
 
 export class PlaylistServiceClient {
 
+  findPlaylistById(playlistId) {
+    return fetch(constants.DIRECT_PLAYLIST_API_URL.replace('PID', playlistId))
+      .then(response => response.json());
+  }
+
   createAndAddToPlaylist(playlistName, trackId, trackName) {
     const playlist = {
       name: playlistName,
@@ -36,6 +41,36 @@ export class PlaylistServiceClient {
     })
       .then(response => response.json());
 
+  }
+
+  removeSongFromPlaylist(playlistId, trackId) {
+      const playlistData = {
+        trackId: trackId
+      };
+      return fetch(constants.DIRECT_PLAYLIST_API_URL.replace('PID', playlistId) + '/remove', {
+        body: JSON.stringify(playlistData),
+        credentials: 'include', // include, same-origin, *omit
+        method: 'put',
+        headers: {
+          'content-type': 'application/json'
+        }
+      })
+        .then(response => response.json());
+  }
+
+  renamePlaylist(playlistId, newName) {
+    const playlistData = {
+      newName: newName
+    };
+    return fetch(constants.DIRECT_PLAYLIST_API_URL.replace('PID', playlistId), {
+      body: JSON.stringify(playlistData),
+      credentials: 'include', // include, same-origin, *omit
+      method: 'put',
+      headers: {
+        'content-type': 'application/json'
+      }
+    })
+      .then(response => response.json());
   }
 
   deletePlaylist(playlistId) {

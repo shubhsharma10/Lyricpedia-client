@@ -12,7 +12,10 @@
             {{playlist.name}}
           </a>
           </label>
-          <i (click)="deletePlaylist(playlist._id)" class="fa fa-times fa-2x mr-1"></i>
+          <span>
+            <a routerLink="/playlist/{{playlist._id}}" class="btn btn-sm btn-primary mb-2 mx-1">Go to playlist</a>
+            <i (click)="deletePlaylist(playlist._id)" class="fa fa-times fa-2x mr-1"></i>
+          </span>
         </div>
       </div>
       <div [attr.id]="'collapseOne_' + i" class="panel-collapse collapse in">

@@ -24,6 +24,7 @@ import {PlaylistServiceClient} from './services/playlist.service.client';
 import { PlaylistsPageComponent } from './playlists-page/playlists-page.component';
 import { AllSongsComponent } from './all-songs/all-songs.component';
 import { AllPlaylistsComponent } from './all-playlists/all-playlists.component';
+import { PlaylistPageComponent } from './playlist-page/playlist-page.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { AllPlaylistsComponent } from './all-playlists/all-playlists.component';
     RatedSongsComponent,
     PlaylistsPageComponent,
     AllSongsComponent,
-    AllPlaylistsComponent
+    AllPlaylistsComponent,
+    PlaylistPageComponent
   ],
   imports: [
     BrowserModule,

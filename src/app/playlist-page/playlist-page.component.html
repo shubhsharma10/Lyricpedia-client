@@ -1,0 +1,44 @@
+<app-top-navbar></app-top-navbar>
+<div class="container-fluid py-5">
+  <div class="row justify-content-between pt-5 pb-1 px-2">
+    <h4><i class="fa fa-list mx-2"></i>{{playlist.name}}</h4>
+    <span class="px-1">
+      <button class="btn btn-primary btn-sm mx-1" data-toggle="modal" data-target="#renamePlaylist">Rename</button>
+    </span>
+  </div>
+  <div class="row">
+    <ul class="container-fluid">
+      <li class="list-group-item list-group-item-action flex-column align-items-start" *ngFor="let track of playlist.tracks">
+        <div class="d-flex w-100 justify-content-between flex-nowrap" >
+          <div class="row mx-1">
+            <i class="fa fa-music fa-1x mx-1 py-1"></i>
+            <a class="mb-1 mx-2" routerLink="/track/{{track.track_id}}"><label>{{track.track_name}}</label></a>
+          </div>
+          <div class="row mx-1">
+            <i (click)="removeSongFromPlaylist(playlistId,track.track_id)" class="fa fa-times fa-2x"></i>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
+<div class="modal fade" id="renamePlaylist" tabindex="-1" role="dialog" aria-labelledby="renamePlaylistCenterDialog" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Rename playlist</h5>
+      </div>
+      <div class="modal-body">
+        <input [(ngModel)]="playlist.name"
+               placeholder="New Playlist"
+               class="form-control my-2"/>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+        <button type="button" (click)="renamePlaylist()" data-dismiss="modal" class="btn btn-success">Rename</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-bottom-navbar></app-bottom-navbar>

@@ -3,11 +3,9 @@
   <div class="panel-group py-1" [attr.id]="'accordion_' + i" *ngFor="let playlist of playlists; let i = index">
     <div class="panel panel-primary" >
       <div class="panel-heading">
-        <label class="panel-title">
-          <i class="fa fa-list mx-1"></i><a (click)="setSelectedPlaylist(playlist.name)"
-             data-toggle="collapse"
-             [attr.data-parent]="'#accordion_' + i"
-             [attr.href]="'#collapseOne_' + i">
+        <label class="panel-title" routerLink="/playlist/{{playlist._id}}">
+          <i class="fa fa-list mx-1"></i>
+          <a>
             {{playlist.name}}
           </a>
         </label>
