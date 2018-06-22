@@ -1,4 +1,5 @@
 export class User {
+  _id: string;
   username: string;
   password: string;
   userType: string;
@@ -7,4 +8,6 @@ export class User {
   email: string;
   phoneNumber: string;
   address: string;
+  followers = [];
+  following = [];
 }

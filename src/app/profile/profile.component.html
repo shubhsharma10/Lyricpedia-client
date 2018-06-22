@@ -34,6 +34,9 @@
       </button>
     </div>
     <div class="col-xs-12 col-sm-6 custom-list-box-400">
+      <app-user-list></app-user-list>
+    </div>
+    <div class="col-xs-12 col-sm-6 custom-list-box-400">
       <div *ngIf="userCode === 1 || userCode === 2 ; then UserSongs"></div>
       <ng-template #UserSongs>
         <app-rated-songs></app-rated-songs>

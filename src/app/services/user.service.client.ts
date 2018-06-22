@@ -24,7 +24,7 @@ export class UserServiceClient {
   }
 
   findUserById(userId) {
-    return fetch(constants.USER_API_URL + userId)
+    return fetch(constants.DIRECT_USER_API_URL.replace('UID', userId))
       .then(response => response.json());
   }
 
@@ -79,5 +79,37 @@ export class UserServiceClient {
   findAllUsers() {
     return fetch(constants.USER_API_URL)
       .then(response => response.json());
+  }
+
+  followUser(fuserId, fusername) {
+    const targetUser = {
+      fuserId: fuserId,
+      fuserName: fusername
+    };
+    return fetch(constants.FOLLOW_USER_API_URL,
+      {
+        body: JSON.stringify(targetUser),
+        method: 'post',
+        credentials: 'include', // include, same-origin, *omit
+        headers: {
+          'content-type': 'application/json'
+        }
+      });
+  }
+
+  unfollowUser(fuserId, fusername) {
+    const targetUser = {
+      fuserId: fuserId,
+      fuserName: fusername
+    };
+    return fetch(constants.UNFOLLOW_USER_API_URL,
+      {
+        body: JSON.stringify(targetUser),
+        method: 'post',
+        credentials: 'include', // include, same-origin, *omit
+        headers: {
+          'content-type': 'application/json'
+        }
+      });
   }
 }

@@ -1,3 +1,9 @@
-<p>
-  public-profile works!
-</p>
+<app-top-navbar></app-top-navbar>
+<div class="container py-5 my-5">
+  <label>{{vistingUser.username}}</label>
+  <span>
+    <button [disabled]="isFollowing" (click)="followVisitingUser()" class="btn btn-primary">Follow</button>
+    <button [disabled]="!isFollowing" (click)="unfollowVisitingUser()" class="btn btn-secondary">Unfollow</button>
+  </span>
+</div>
+<app-bottom-navbar></app-bottom-navbar>
