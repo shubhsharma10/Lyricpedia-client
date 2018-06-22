@@ -32,15 +32,6 @@
               class="btn btn-primary btn-block my-2">
         Update
       </button>
-
-      <div class="d-flex justify-content-between">
-        <button routerLink="/home" class="btn btn-primary">Home</button>
-        <div *ngIf="userCode === 3; then AdminPageLink"></div>
-        <ng-template #AdminPageLink>
-          <button routerLink="/admin" class="btn btn-primary">Admin</button>
-        </ng-template>
-        <button [disabled] = "userNotLoggedIn" (click)="logout()" class="btn btn-danger">Logout</button>
-      </div>
     </div>
     <div class="col-xs-12 col-sm-6 custom-list-box-400">
       <div *ngIf="userCode === 1 || userCode === 2 ; then UserSongs"></div>
@@ -62,6 +53,22 @@
         <app-all-playlists></app-all-playlists>
       </ng-template>
     </div>
+  </div>
+  <div class="row">
+    <div class="btn-group btn-group-justified px-2" role="group" >
+        <div class="btn-group" role="group">
+          <button routerLink="/home" class="btn btn-primary">Home</button>
+        </div>
+        <div *ngIf="userCode === 3; then AdminPageLink"></div>
+        <ng-template #AdminPageLink>
+          <div class="btn-group" role="group">
+            <button routerLink="/admin" class="btn btn-success">Admin</button>
+          </div>
+        </ng-template>
+        <div class="btn-group" role="group">
+          <button [disabled] = "userNotLoggedIn" (click)="logout()" class="btn btn-danger" >Logout</button>
+        </div>
+      </div>
   </div>
 </div>
 <app-bottom-navbar></app-bottom-navbar>

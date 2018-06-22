@@ -13,7 +13,7 @@ body, html {
 }
 .custom-list-box-400 ul{
   overflow-y: auto;
-  height: 400px;
+  height: 315px;
 }
 
 .list-group-item:nth-of-type(even){
