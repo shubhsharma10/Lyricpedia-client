@@ -90,6 +90,17 @@ export class PlaylistServiceClient {
       .then(response => response.json());
   }
 
+  findPlaylistsForUserByUserId(userId) {
+    return fetch(constants.USER_ID_PLAYLIST_API_URL.replace('UID',userId), {
+      credentials: 'include',
+      method: 'get',
+      headers: {
+        'content-type': 'application/json'
+      }
+    })
+      .then(response => response.json());
+  }
+
   findAllPlaylists() {
     return fetch(constants.PLAYLIST_API_URL)
       .then(response => response.json());

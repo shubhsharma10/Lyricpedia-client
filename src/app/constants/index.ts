@@ -27,6 +27,8 @@ export const ADD_TO_PLAYLIST_API_URL =
   'https://lyricpedia-server.herokuapp.com/api/playlist/add';
 export const USER_PLAYLIST_API_URL =
   'https://lyricpedia-server.herokuapp.com/api/user/playlist';
+export const USER_ID_PLAYLIST_API_URL =
+  'https://lyricpedia-server.herokuapp.com/api/user/UID/playlist';
 export const FOLLOW_USER_API_URL =
   'https://lyricpedia-server.herokuapp.com/api/user/follow';
 export const UNFOLLOW_USER_API_URL =

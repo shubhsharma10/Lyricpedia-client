@@ -59,7 +59,7 @@ export class PublicProfileComponent implements OnInit {
   loadVistingUser() {
     this.userService.findUserById(this.visitingUserId)
       .then((user) => {
-          if(user) {
+          if (user) {
             console.log(user);
             this.vistingUser = user as User;
           }

@@ -29,6 +29,7 @@ import { PublicProfileComponent } from './public-profile/public-profile.componen
 import { FollowersComponent } from './followers/followers.component';
 import { FollowingComponent } from './following/following.component';
 import { UserListComponent } from './user-list/user-list.component';
+import { UserPlaylistsComponent } from './user-playlists/user-playlists.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import { UserListComponent } from './user-list/user-list.component';
     PublicProfileComponent,
     FollowersComponent,
     FollowingComponent,
-    UserListComponent
+    UserListComponent,
+    UserPlaylistsComponent
   ],
   imports: [
     BrowserModule,

@@ -1,9 +1,27 @@
 <app-top-navbar></app-top-navbar>
 <div class="container py-5 my-5">
-  <label>{{vistingUser.username}}</label>
-  <span>
-    <button [disabled]="isFollowing" (click)="followVisitingUser()" class="btn btn-primary">Follow</button>
-    <button [disabled]="!isFollowing" (click)="unfollowVisitingUser()" class="btn btn-secondary">Unfollow</button>
-  </span>
+  <div class="row justify-content-between">
+    <h4>{{vistingUser.username}}</h4>
+    <span>
+      <button [disabled]="isFollowing" (click)="followVisitingUser()" class="btn btn-primary mx-2">Follow</button>
+      <button [disabled]="!isFollowing" (click)="unfollowVisitingUser()" class="btn btn-secondary mx-2">Unfollow</button>
+    </span>
+  </div>
+  <div class="row">
+    <div class="col-xs-12 col-sm-6 custom-list-box-400">
+      <div class="borderedContainer">
+        <div class="title-label">
+          <h6 class="boxLabel">User Information</h6>
+        </div>
+        <h6 class="mx-1 my-1">First name:</h6>
+        <label class="mx-1">{{vistingUser.firstName}}</label>
+        <h6 class="mx-1 my-1">Last name:</h6>
+        <label class="mx-1">{{vistingUser.lastName}}</label>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-6 custom-list-box-400">
+      <app-user-playlists></app-user-playlists>
+    </div>
+  </div>
 </div>
 <app-bottom-navbar></app-bottom-navbar>
