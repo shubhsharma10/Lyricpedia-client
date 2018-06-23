@@ -38,6 +38,7 @@ export class TrackPageComponent implements OnInit {
   setParams(params) {
     if (params['trackId']) {
       this.trackId = Number(params['trackId']);
+      this.loadUserProfile();
       this.loadTrackInfo(this.trackId);
       this.loadLyrics(this.trackId);
     }
@@ -107,6 +108,19 @@ export class TrackPageComponent implements OnInit {
   }
   loadUserData() {
     this.loadPlaylists();
+    this.loadRatingForThisSong();
+  }
+  loadRatingForThisSong() {
+    this.trackService.findRatedSongsForUser()
+      .then((result) => {
+        if (result) {
+          const ratingForThisSong = result.filter(x => x.track_id === this.trackId);
+          if (ratingForThisSong.length > 0) {
+            console.log(ratingForThisSong);
+            this.liked = String(ratingForThisSong[0].rating) === 'like';
+          }
+        }
+      });
   }
   loadPlaylists() {
     this.playlistService.findPlaylistsForUser()
@@ -144,7 +158,7 @@ export class TrackPageComponent implements OnInit {
       })
       .catch((error) => console.log(error));
   }
-  ngOnInit() {
+  loadUserProfile() {
     this.userService
       .isUserLoggedIn()
       .then((result) => {
@@ -172,6 +186,8 @@ export class TrackPageComponent implements OnInit {
       .catch(() => {
         console.log('No user logged in');
       });
+  }
+  ngOnInit() {
   }
 
 }
