@@ -1,34 +1,76 @@
 <app-top-navbar></app-top-navbar>
 <div class="container-fluid page-container">
   <div class="row py-5 px-5">
-    <div class="col-xs-4 col-md-4">
-      <h5 class="pt-4">Users:</h5>
-      <div class="list-group list-group-flush">
-        <a class="list-group-item list-group-item-action flex-column align-items-start" *ngFor="let user of users">
-          <div class="d-flex w-100 justify-content-between flex-nowrap" >
-            <div class="row mx-1">
-              <a class="mb-1 mx-2"><h5>{{user.username}}</h5></a>
-            </div>
-            <div class="row mx-1">
-              <a class="mb-1 mx-2"><h5>{{user.userType}}</h5></a>
-            </div>
+    <div class="col-xs-6 col-md-6 custom-list-box-400">
+      <div class="borderedContainer">
+        <div class="title-label">
+          <h6 class="boxLabel">Add User:</h6>
+        </div>
+        <div *ngIf="!isValidUserNamePassword; then InvalidUsernamePassword"></div>
+        <ng-template #InvalidUsernamePassword>
+          <div class="alert alert-danger" role="alert">
+            Please enter valid username and password!
           </div>
-        </a>
+        </ng-template>
+        <div *ngIf="isUsernameInUse; then UsernameInUse"></div>
+        <ng-template #UsernameInUse>
+          <div class="alert alert-danger" role="alert">
+            Username is already in use. Please choose another username!
+          </div>
+        </ng-template>
+        <div *ngIf="isPasswordNotSame; then DifferentPassword"></div>
+        <ng-template #DifferentPassword>
+          <div class="alert alert-danger" role="alert">
+            Passwords should be same!
+          </div>
+        </ng-template>
+
+        <input [(ngModel)]="username"
+               type="text"
+               placeholder="username"
+               class="form-control my-2"/>
+        <input [(ngModel)]="password"
+               type="password"
+               required
+               placeholder="password"
+               class="form-control my-2"/>
+        <input [(ngModel)]="password2"
+               type="password"
+               required
+               placeholder="verify password"
+               class="form-control my-2"/>
+        <select [(ngModel)]="selectedUserType" required class="form-control my-2">
+          <option value="Admin">Admin</option>
+          <option value="User">User</option>
+          <option value="Premium">Premium User</option>
+        </select>
+        <button (click)="register(username, password, password2,selectedUserType)"
+                class="btn btn-primary btn-block my-2">
+          Add User
+        </button>
       </div>
     </div>
-    <div class="col-xs-4 col-md-4">
-      <h5 class="pt-4">Users:</h5>
-      <div class="list-group list-group-flush">
-        <a class="list-group-item list-group-item-action flex-column align-items-start" *ngFor="let user of users">
-          <div class="d-flex w-100 justify-content-between flex-nowrap" >
-            <div class="row mx-1">
-              <a class="mb-1 mx-2"><h5>{{user.username}}</h5></a>
+    <div class="col-xs-6 col-md-6 custom-list-box-400">
+      <div class="borderedContainer">
+        <div class="title-label">
+          <h6 class="boxLabel">Users:</h6>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item list-group-item-action flex-column align-items-start" *ngFor="let user of users">
+            <div class="d-flex w-100 justify-content-between flex-nowrap" >
+              <a class="mb-1 mx-2" routerLink="/user/{{user._id}}">
+                <i class="fa fa-user fa-1x mr-2"></i>
+                <label>
+                  {{user.username}}
+                </label>
+                <small>
+                  type: {{user.userType}}
+                </small>
+              </a>
+              <i (click)="deleteUser(user._id)" class="fa fa-times fa-2x"></i>
             </div>
-            <div class="row mx-1">
-              <a class="mb-1 mx-2"><h5>{{user.userType}}</h5></a>
-            </div>
-          </div>
-        </a>
+          </li>
+        </ul>
       </div>
     </div>
     </div>

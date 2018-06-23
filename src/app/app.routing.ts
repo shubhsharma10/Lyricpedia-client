@@ -14,6 +14,7 @@ import {PlaylistsPageComponent} from './playlists-page/playlists-page.component'
 import {PlaylistPageComponent} from './playlist-page/playlist-page.component';
 import {PublicProfileComponent} from './public-profile/public-profile.component';
 import {UserSearchpageComponent} from './user-searchpage/user-searchpage.component';
+import {AdminConsolePageComponent} from './admin-console-page/admin-console-page.component';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full'},

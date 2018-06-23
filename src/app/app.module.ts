@@ -33,7 +33,6 @@ import { UserPlaylistsComponent } from './user-playlists/user-playlists.componen
 import { UserTranslatedSongsComponent } from './user-translated-songs/user-translated-songs.component';
 import { AllTranslatedSongsComponent } from './all-translated-songs/all-translated-songs.component';
 import { UserSearchpageComponent } from './user-searchpage/user-searchpage.component';
-import { AdminConsolePageComponent } from './admin-console-page/admin-console-page.component';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 @NgModule({
@@ -62,8 +61,7 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
     UserPlaylistsComponent,
     UserTranslatedSongsComponent,
     AllTranslatedSongsComponent,
-    UserSearchpageComponent,
-    AdminConsolePageComponent
+    UserSearchpageComponent
   ],
   imports: [
     BrowserModule,

@@ -8,7 +8,7 @@
         <a class="mb-1 mx-2" routerLink="/user/{{userEntry.userId}}">
           <i class="fa fa-user fa-1x mr-2"></i>
           <label>
-            {{userEntry.username}}
+            {{getUsername(userEntry.userId)}}
           </label>
         </a>
       </div>

@@ -60,6 +60,22 @@ export class UserServiceClient {
     });
   }
 
+  addUser(username, password, selectedUserType) {
+    const user = {
+      username: username,
+      password: password,
+      userType: selectedUserType
+    };
+    return fetch(constants.ADD_USER_API_URL, {
+      body: JSON.stringify(user),
+      credentials: 'include', // include, same-origin, *omit
+      method: 'post',
+      headers: {
+        'content-type': 'application/json'
+      }
+    });
+  }
+
   createUser(username, password, selectedUserType) {
     const user = {
       username: username,
@@ -76,8 +92,30 @@ export class UserServiceClient {
     });
   }
 
+  deleteUser(userId) {
+    return fetch(constants.DIRECT_USER_API_URL.replace('UID', userId), {
+      credentials: 'include', // include, same-origin, *omit
+      method: 'delete'
+    });
+  }
+
   findAllUsers() {
     return fetch(constants.USER_API_URL)
+      .then(response => response.json());
+  }
+
+  findAllUsersByIds(listOfUserIds) {
+    const listOfUserIdsObj = {
+      listOfUserIds: listOfUserIds
+    };
+    return fetch(constants.ALL_USER_BY_IDS_API_URL, {
+            body: JSON.stringify(listOfUserIdsObj),
+            credentials: 'include', // include, same-origin, *omit
+            method: 'put',
+            headers: {
+            'content-type': 'application/json'
+          }
+        })
       .then(response => response.json());
   }
 
