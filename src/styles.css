@@ -16,6 +16,15 @@ body, html {
   height: 315px;
 }
 
+.page-container{
+  margin-bottom: 80px;
+}
+
+.center-div {
+  margin: 0 auto;
+  width:80%
+}
+
 .list-group-item:nth-of-type(even){
   background-color: aqua;
   cursor: pointer;

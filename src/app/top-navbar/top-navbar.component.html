@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light custom-nav-bg fixed-top container-fluid">
+<nav class="navbar navbar-expand-lg navbar-light custom-nav-bg container-fluid">
   <a class="navbar-brand LandingText" routerLink="/home">lyricpedia</a>
   <div *ngIf="isUserLoggedIn; then LoggedInUserTemplate else NotLoggedInUserTemplate"></div>
   <ng-template #NotLoggedInUserTemplate>
