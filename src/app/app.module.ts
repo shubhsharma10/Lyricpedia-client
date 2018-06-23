@@ -34,6 +34,7 @@ import { UserTranslatedSongsComponent } from './user-translated-songs/user-trans
 import { AllTranslatedSongsComponent } from './all-translated-songs/all-translated-songs.component';
 import { UserSearchpageComponent } from './user-searchpage/user-searchpage.component';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { EditableProfileComponent } from './editable-profile/editable-profile.component';
 
 @NgModule({
   declarations: [
@@ -61,7 +62,8 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
     UserPlaylistsComponent,
     UserTranslatedSongsComponent,
     AllTranslatedSongsComponent,
-    UserSearchpageComponent
+    UserSearchpageComponent,
+    EditableProfileComponent
   ],
   imports: [
     BrowserModule,

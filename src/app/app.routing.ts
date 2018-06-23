@@ -14,6 +14,7 @@ import {PlaylistsPageComponent} from './playlists-page/playlists-page.component'
 import {PlaylistPageComponent} from './playlist-page/playlist-page.component';
 import {PublicProfileComponent} from './public-profile/public-profile.component';
 import {UserSearchpageComponent} from './user-searchpage/user-searchpage.component';
+import {EditableProfileComponent} from './editable-profile/editable-profile.component';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -29,6 +30,7 @@ const appRoutes: Routes = [
   { path: 'playlist/:playlistId', component: PlaylistPageComponent},
   { path: 'user/search', component: UserSearchpageComponent},
   { path: 'user/:userId', component: PublicProfileComponent},
+  { path: 'user/:userId/edit', component: EditableProfileComponent},
   { path: '**', component: HomePageComponent} // last
 ];
 

@@ -58,7 +58,7 @@
         <ul class="list-group list-group-flush">
           <li class="list-group-item list-group-item-action flex-column align-items-start" *ngFor="let user of users">
             <div class="d-flex w-100 justify-content-between flex-nowrap" >
-              <a class="mb-1 mx-2" routerLink="/user/{{user._id}}">
+              <a class="mb-1 mx-2" routerLink="/user/{{user._id}}/edit">
                 <i class="fa fa-user fa-1x mr-2"></i>
                 <label>
                   {{user.username}}

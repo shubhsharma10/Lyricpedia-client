@@ -92,6 +92,18 @@ export class UserServiceClient {
     });
   }
 
+  updateUser(userId, user) {
+    return fetch(constants.DIRECT_USER_API_URL.replace('UID', userId), {
+        body: JSON.stringify(user),
+        credentials: 'include', // include, same-origin, *omit
+        method: 'put',
+        headers: {
+          'content-type': 'application/json'
+        }
+      })
+      .then(response => response.json());
+  }
+
   deleteUser(userId) {
     return fetch(constants.DIRECT_USER_API_URL.replace('UID', userId), {
       credentials: 'include', // include, same-origin, *omit

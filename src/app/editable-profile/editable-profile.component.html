@@ -1,0 +1,39 @@
+<app-top-navbar></app-top-navbar>
+<div class="container center-div page-container py-5">
+  <div class="row align-items-center justify-content-center mt-5">
+    <div class="col-md-6 col-md-offset-6">
+      <h4>Update profile</h4>
+
+      <input [(ngModel)]="user.username"
+             [disabled] = "userNotLoggedIn"
+             placeholder="username"
+             class="form-control mb-2"/>
+      <input [(ngModel)]="user.firstName"
+             [disabled] = "userNotLoggedIn"
+             placeholder="first name"
+             class="form-control my-2"/>
+      <input [(ngModel)]="user.lastName"
+             [disabled] = "userNotLoggedIn"
+             placeholder="lastName"
+             class="form-control my-2"/>
+      <input [(ngModel)]="user.email"
+             [disabled] = "userNotLoggedIn"
+             placeholder="email"
+             class="form-control my-2"/>
+      <input [(ngModel)]="user.phoneNumber"
+             [disabled] = "userNotLoggedIn"
+             placeholder="333-222-3232"
+             class="form-control my-2"/>
+      <input [(ngModel)]="user.address"
+             [disabled] = "userNotLoggedIn"
+             placeholder="X Street,Boston,MA"
+             class="form-control my-2"/>
+      <button (click)="update()"
+              [disabled] = "userNotLoggedIn"
+              class="btn btn-primary btn-block my-2">
+        Update
+      </button>
+    </div>
+  </div>
+</div>
+<app-bottom-navbar></app-bottom-navbar>
