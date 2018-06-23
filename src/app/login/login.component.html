@@ -14,12 +14,13 @@
           Username/password are not correct. Please try again!
         </div>
       </ng-template>
-      <h1>Login</h1>
+      <h4>Login</h4>
       <input [(ngModel)]="user.username"
              [disabled] = "userLoggedIn"
              placeholder="username"
              class="form-control my-2"/>
       <input [(ngModel)]="user.password"
+             type="password"
              placeholder="password"
              [disabled] = "userLoggedIn"
              required
@@ -30,8 +31,8 @@
         Login
       </button>
       <div class="d-flex justify-content-between">
-        <button routerLink="/home" class="btn btn-outline-primary">Home</button>
-        <button routerLink="/register" class="btn btn-outline-success">Register</button>
+        <button routerLink="/home" class="btn btn-primary">Home</button>
+        <button routerLink="/register" class="btn btn-success">Register</button>
       </div>
     </div>
   </div>
