@@ -6,11 +6,21 @@
         <div class="col">
             <h2>{{track.track_name}}</h2>
             <a routerLink="/artist/{{track.artist_id}}"><h4>{{track.artist_name}}</h4></a>
-            <div *ngIf="userCode > 0; then UserTemplate"></div>
-            <ng-template #UserTemplate>
+            <div *ngIf="userCode == 2 || userCode == 3; then AdminPremiumUserTemplate"></div>
+            <ng-template #AdminPremiumUserTemplate>
               <div class="row pl-2">
-                <p class="mx-1"><span class="fa fa-thumbs-up smallIcon fa-fw"></span>{{track.likes}}</p>
-                <p class="mx-1"><span class="fa fa-thumbs-down smallIcon fa-fw"></span>{{track.dislikes}}</p>
+                <div class="dropdown">
+                  <a class="mx-1 dropdown-toggle" data-toggle="dropdown"><span class="fa fa-thumbs-up smallIcon fa-fw"></span>{{track.likes}}</a>
+                  <ul class="dropdown-menu">
+                    <li class="list-group-item" *ngFor="let user of likedUsers" routerLink="/user/{{user.userId}}">{{user.username}}</li>
+                  </ul>
+                </div>
+                <div class="dropdown">
+                  <a class="mx-1 dropdown-toggle" data-toggle="dropdown"><span class="fa fa-thumbs-down smallIcon fa-fw"></span>{{track.dislikes}}</a>
+                  <ul class="dropdown-menu">
+                    <li class="list-group-item" *ngFor="let user of dislikedUsers" routerLink="/user/{{user.userId}}">{{user.username}}</li>
+                  </ul>
+                </div>
                 <i (click)="handleRating()" [ngClass]="liked === true ? 'fa-thumbs-up' : 'fa-thumbs-down'"
                    class="fa fa-2x ml-2 largeIcon"></i>
               </div>
@@ -39,6 +49,39 @@
                 </div>
               </div>
             </ng-template>
+          <div *ngIf="userCode ==  1; then FreeUserTemplate"></div>
+            <ng-template #FreeUserTemplate>
+            <div class="row pl-2">
+                <a class="mx-1"><span class="fa fa-thumbs-up smallIcon fa-fw"></span>{{track.likes}}</a>
+                <a class="mx-1"><span class="fa fa-thumbs-down smallIcon fa-fw"></span>{{track.dislikes}}</a>
+                <i (click)="handleRating()" [ngClass]="liked === true ? 'fa-thumbs-up' : 'fa-thumbs-down'"
+                   class="fa fa-2x ml-2 largeIcon"></i>
+            </div>
+            <div class="row pl-3">
+
+              <!--Allow submitting translation only when only when premium or admin user is logged in-->
+              <div *ngIf="userCode == 2 || userCode == 3; then PremiumAdminUserAddTranslationTemplate"></div>
+              <ng-template #PremiumAdminUserAddTranslationTemplate>
+                <button class="btn btn-info mr-2 my-1" data-toggle="modal" data-target="#submitTranslationModal">Submit Translation</button>
+              </ng-template>
+
+              <div class="btn-group dropright">
+                <button type="button" class="btn btn-success dropdown-toggle dropdown-toggle-split my-1"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Add to playlist
+                </button>
+                <div class="dropdown-menu dropdown-menu-right">
+                  <button class="dropdown-item" data-toggle="modal" data-target="#exampleModalCenter">Create new</button>
+                  <div class="dropdown-divider"></div>
+                  <button class="dropdown-item"
+                          *ngFor="let playlist of playlists"
+                          (click)="addToPlaylist(playlist._id)">
+                    {{playlist.name}}
+                  </button>
+                </div>
+              </div>
+            </div>
+          </ng-template>
         </div>
       </div>
       <div class="row pt-3">

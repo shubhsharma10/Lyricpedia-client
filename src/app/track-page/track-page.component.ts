@@ -31,6 +31,8 @@ export class TrackPageComponent implements OnInit {
   tempTranslation: string;
   tempTranslationArray = [];
   user: User = new User();
+  likedUsers = [];
+  dislikedUsers = [];
   newPlaylist: Playlist = new Playlist();
   playlists: Playlist[] = [];
   setParams(params) {
@@ -42,7 +44,6 @@ export class TrackPageComponent implements OnInit {
   }
   handleRating() {
     this.liked = !this.liked;
-    console.log('going to update');
     let rating = 'like';
     if (this.liked) {
       rating = 'like';
@@ -60,18 +61,15 @@ export class TrackPageComponent implements OnInit {
     this.playlistService
       .createAndAddToPlaylist(this.newPlaylist.name, this.trackId, this.track.track_name)
       .then((result) => {
-        console.log(result);
         this.loadPlaylists();
       });
   }
   addToPlaylist(playlistId) {
-    console.log('asking to add to playlist ' + playlistId);
     this.playlistService
       .addToPlaylist(playlistId, this.trackId, this.track.track_name)
       .then((result) => console.log(result));
   }
   submitTranslation() {
-    console.log(this.tempTranslation);
     this.trackService.updateTranslation(this.trackId, this.tempTranslation)
       .then((result) => {
         if (result.status === 200) {
@@ -120,8 +118,6 @@ export class TrackPageComponent implements OnInit {
     this.trackService
       .findTrackById(trackId)
       .then((result) => {
-        console.log(result);
-        console.log(result.status);
         if (result.status !== 200) {
           console.log('did not found song, so creating');
           return this.trackService.createTrack(trackId, trackName);
@@ -132,16 +128,18 @@ export class TrackPageComponent implements OnInit {
       })
       .then((createdSong) => {
         if (createdSong) {
-          console.log(createdSong);
           const track = createdSong as Track;
           this.track.likes = track.likes || 0;
           this.track.dislikes = track.dislikes || 0;
           this.track.listOfUsers = track.listOfUsers;
-          this.track.translation = track.translation;
           this.track.lot = track.lot;
-          this.tempTranslation = this.track.translation;
-          this.tempTranslationArray = this.tempTranslation.split('\n');
-
+          if (track.translation) {
+            this.track.translation = track.translation;
+            this.tempTranslation = this.track.translation;
+            this.tempTranslationArray = this.track.translation.split('\n');
+          }
+          this.likedUsers = this.track.listOfUsers.filter(x => x.rating === 'like');
+          this.dislikedUsers = this.track.listOfUsers.filter(x => x.rating === 'dislike');
         }
       })
       .catch((error) => console.log(error));
