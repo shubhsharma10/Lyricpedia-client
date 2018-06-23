@@ -1,45 +1,45 @@
 export const API_KEY = '629bf02832ff5f4513c42b46453c2340';
 
 export const USER_API_URL =
-  'http://localhost:4000/api/user';
+  'https://lyricpedia-server.herokuapp.com/api/user';
 export const ALL_USER_BY_IDS_API_URL =
-  'http://localhost:4000/api/usernames';
+  'https://lyricpedia-server.herokuapp.com/api/usernames';
 export const ADD_USER_API_URL =
-  'http://localhost:4000/api/user/add';
+  'https://lyricpedia-server.herokuapp.com/api/user/add';
 export const DIRECT_USER_API_URL =
-  'http://localhost:4000/api/user/UID';
+  'https://lyricpedia-server.herokuapp.com/api/user/UID';
 export const PROFILE_API_URL =
-  'http://localhost:4000/api/profile';
+  'https://lyricpedia-server.herokuapp.com/api/profile';
 export const SESSION_API_URL =
-  'http://localhost:4000/api/session';
+  'https://lyricpedia-server.herokuapp.com/api/session';
 export const LOGIN_API_URL =
-  'http://localhost:4000/api/login';
+  'https://lyricpedia-server.herokuapp.com/api/login';
 export const LOGOUT_API_URL =
-  'http://localhost:4000/api/logout';
+  'https://lyricpedia-server.herokuapp.com/api/logout';
 
 export const SONG_API_URL =
-  'http://localhost:4000/api/song';
+  'https://lyricpedia-server.herokuapp.com/api/song';
 export const DIRECT_SONG_API_URL =
-  'http://localhost:4000/api/song/SID';
+  'https://lyricpedia-server.herokuapp.com/api/song/SID';
 export const USER_SONG_API_URL =
-  'http://localhost:4000/api/user/song';
+  'https://lyricpedia-server.herokuapp.com/api/user/song';
 export const PLAYLIST_API_URL =
-  'http://localhost:4000/api/playlist';
+  'https://lyricpedia-server.herokuapp.com/api/playlist';
 export const DIRECT_PLAYLIST_API_URL =
-  'http://localhost:4000/api/playlist/PID';
+  'https://lyricpedia-server.herokuapp.com/api/playlist/PID';
 export const ADD_TO_PLAYLIST_API_URL =
-  'http://localhost:4000/api/playlist/add';
+  'https://lyricpedia-server.herokuapp.com/api/playlist/add';
 export const USER_PLAYLIST_API_URL =
-  'http://localhost:4000/api/user/playlist';
+  'https://lyricpedia-server.herokuapp.com/api/user/playlist';
 export const USER_ID_PLAYLIST_API_URL =
-  'http://localhost:4000/api/user/UID/playlist';
+  'https://lyricpedia-server.herokuapp.com/api/user/UID/playlist';
 export const FOLLOW_USER_API_URL =
-  'http://localhost:4000/api/user/follow';
+  'https://lyricpedia-server.herokuapp.com/api/user/follow';
 export const UNFOLLOW_USER_API_URL =
-  'http://localhost:4000/api/user/unfollow';
+  'https://lyricpedia-server.herokuapp.com/api/user/unfollow';
 export const TRANSLATION_API_URL =
-  'http://localhost:4000/api/song/SID/translation';
+  'https://lyricpedia-server.herokuapp.com/api/song/SID/translation';
 export const USER_TRANSLATED_SONGS_API_URL =
-  'http://localhost:4000/api/user/translated';
+  'https://lyricpedia-server.herokuapp.com/api/user/translated';
 export const TRANSLATED_SONGS_API_URL =
-  'http://localhost:4000/api/translated';
+  'https://lyricpedia-server.herokuapp.com/api/translated';
