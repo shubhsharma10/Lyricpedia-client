@@ -30,6 +30,8 @@ import { FollowersComponent } from './followers/followers.component';
 import { FollowingComponent } from './following/following.component';
 import { UserListComponent } from './user-list/user-list.component';
 import { UserPlaylistsComponent } from './user-playlists/user-playlists.component';
+import { UserTranslatedSongsComponent } from './user-translated-songs/user-translated-songs.component';
+import { AllTranslatedSongsComponent } from './all-translated-songs/all-translated-songs.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +56,9 @@ import { UserPlaylistsComponent } from './user-playlists/user-playlists.componen
     FollowersComponent,
     FollowingComponent,
     UserListComponent,
-    UserPlaylistsComponent
+    UserPlaylistsComponent,
+    UserTranslatedSongsComponent,
+    AllTranslatedSongsComponent
   ],
   imports: [
     BrowserModule,

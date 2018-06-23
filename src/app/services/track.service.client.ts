@@ -81,8 +81,24 @@ export class TrackServiceClient {
       .then(response => response.json());
   }
 
+  findTranslatedSongsForUser(){
+    return fetch(constants.USER_TRANSLATED_SONGS_API_URL, {
+      credentials: 'include',
+      method: 'get',
+      headers: {
+        'content-type': 'application/json'
+      }
+    })
+      .then(response => response.json());
+  }
+
   findAllSongs() {
     return fetch(constants.SONG_API_URL)
-      .then(response => response.json())
+      .then(response => response.json());
+  }
+
+  findAllTranslatedSongs() {
+    return fetch(constants.TRANSLATED_SONGS_API_URL)
+      .then(response => response.json());
   }
 }

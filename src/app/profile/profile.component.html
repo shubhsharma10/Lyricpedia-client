@@ -72,6 +72,16 @@
         <app-all-playlists></app-all-playlists>
       </ng-template>
     </div>
+    <div class="col-xs-12 col-sm-6 custom-list-box-400">
+      <div *ngIf="userCode === 2 ; then PremiumUserTranslatedSongs"></div>
+      <ng-template #PremiumUserTranslatedSongs>
+        <app-user-translated-songs></app-user-translated-songs>
+      </ng-template>
+      <div *ngIf="userCode === 3 ; then AdminAllTranslatedSongs"></div>
+      <ng-template #AdminAllTranslatedSongs>
+        <app-all-translated-songs></app-all-translated-songs>
+      </ng-template>
+    </div>
   </div>
   <div class="row">
     <div class="btn-group btn-group-justified px-2" role="group" >

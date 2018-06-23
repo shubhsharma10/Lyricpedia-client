@@ -35,3 +35,7 @@ export const UNFOLLOW_USER_API_URL =
   'https://lyricpedia-server.herokuapp.com/api/user/unfollow';
 export const TRANSLATION_API_URL =
   'https://lyricpedia-server.herokuapp.com/api/song/SID/translation';
+export const USER_TRANSLATED_SONGS_API_URL =
+  'https://lyricpedia-server.herokuapp.com/api/user/translated';
+export const TRANSLATED_SONGS_API_URL =
+  'https://lyricpedia-server.herokuapp.com/api/translated';

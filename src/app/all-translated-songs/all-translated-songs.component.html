@@ -1,0 +1,17 @@
+<div class="borderedContainer">
+  <div class="title-label">
+    <h6 class="boxLabel">All Translated Songs:</h6>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item list-group-item-action flex-column align-items-start" *ngFor="let track of tracks">
+      <div class="d-flex w-100 justify-content-left flex-nowrap" >
+        <a class="mb-1 mx-2" routerLink="/track/{{track.track_id}}">
+          <i class="fa fa-music fa-1x mr-2"></i>
+          <label>
+            {{track.track_name}}
+          </label>
+        </a>
+      </div>
+    </li>
+  </ul>
+</div>
