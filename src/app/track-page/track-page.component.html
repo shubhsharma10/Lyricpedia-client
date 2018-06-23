@@ -12,13 +12,13 @@
                 <div class="dropdown">
                   <a class="mx-1 dropdown-toggle" data-toggle="dropdown"><span class="fa fa-thumbs-up smallIcon fa-fw"></span>{{track.likes}}</a>
                   <ul class="dropdown-menu">
-                    <li class="list-group-item" *ngFor="let user of likedUsers" routerLink="/user/{{user.userId}}">{{user.username}}</li>
+                    <li class="list-group-item" *ngFor="let user of likedUsers" routerLink="/user/{{user._id}}">{{user.username}}</li>
                   </ul>
                 </div>
                 <div class="dropdown">
                   <a class="mx-1 dropdown-toggle" data-toggle="dropdown"><span class="fa fa-thumbs-down smallIcon fa-fw"></span>{{track.dislikes}}</a>
                   <ul class="dropdown-menu">
-                    <li class="list-group-item" *ngFor="let user of dislikedUsers" routerLink="/user/{{user.userId}}">{{user.username}}</li>
+                    <li class="list-group-item" *ngFor="let user of dislikedUsers" routerLink="/user/{{user._id}}">{{user.username}}</li>
                   </ul>
                 </div>
                 <i (click)="handleRating()" [ngClass]="liked === true ? 'fa-thumbs-up' : 'fa-thumbs-down'"
