@@ -59,7 +59,24 @@ export class TrackPageComponent implements OnInit {
       .then((updatedSong) => {
         this.track.likes = (updatedSong as Track).likes;
         this.track.dislikes = (updatedSong as Track).dislikes;
-      });
+        this.track.listOfUsers = (updatedSong as Track).listOfUsers;
+        this.likedUsersId = this.track.listOfUsers.filter(x => x.rating === 'like').map(x => x.userId);
+        this.dislikedUsersId = this.track.listOfUsers.filter(x => x.rating === 'dislike').map(x => x.userId);
+        return this.userService.findAllUsersByIds(this.likedUsersId);
+      })
+      .then((result) => {
+        if (result) {
+          this.likedUsers = result as User[];
+        }
+        return this.userService.findAllUsersByIds(this.dislikedUsersId);
+      })
+      .then((result) => {
+        if (result) {
+          this.dislikedUsers = result as User[];
+        }
+      })
+      .catch((error) => console.log(error));
+
   }
   createAndAddToPlaylist() {
     this.playlistService
@@ -126,7 +143,6 @@ export class TrackPageComponent implements OnInit {
         if (result) {
           const ratingForThisSong = result.filter(x => x.track_id === this.trackId);
           if (ratingForThisSong.length > 0) {
-            console.log(ratingForThisSong);
             this.liked = String(ratingForThisSong[0].rating) === 'like';
           }
         }
