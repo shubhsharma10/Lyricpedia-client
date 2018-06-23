@@ -112,4 +112,9 @@ export class UserServiceClient {
         }
       });
   }
+
+  searchUsersByQuery(queryString) {
+    return fetch(constants.USER_API_URL + '?queryString=' + queryString)
+      .then(response => response.json());
+  }
 }

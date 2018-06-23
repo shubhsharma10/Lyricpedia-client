@@ -1,0 +1,28 @@
+<app-top-navbar></app-top-navbar>
+<div class="container py-5">
+    <div class="Search pt-5 pb-1">
+      <div class="col">
+        <label>Search Users by either username, firstname or lastname:</label>
+        <input (keyup.enter)="handleEnter()"
+               type="search"
+               class="py-2"
+               placeholder="Type here..."
+               [(ngModel)]="queryString"/>
+      </div>
+  </div>
+    <div class="container-fluid">
+      <div class="row w-100 py-2">
+        <li class="list-group-item list-group-item-action flex-column align-items-start" *ngFor="let user of users">
+          <div class="d-flex w-100 flex-nowrap" >
+              <a class="mb-1 mx-2" routerLink="/user/{{user._id}}">
+                <i class="fa fa-user fa-1x mr-2"></i>
+                <label>
+                  {{user.username}}
+                </label>
+              </a>
+          </div>
+        </li>
+    </div>
+    </div>
+</div>
+<app-bottom-navbar></app-bottom-navbar>

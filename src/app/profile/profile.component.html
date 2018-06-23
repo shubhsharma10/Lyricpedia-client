@@ -37,9 +37,6 @@
         </button>
       </div>
     </div>
-    <div class="col-xs-12 col-sm-6 custom-list-box-400">
-      <app-user-list></app-user-list>
-    </div>
     <div *ngIf="userCode === 1 || userCode === 2 ; then FollowingUsers"></div>
     <ng-template #FollowingUsers>
       <div class="col-xs-12 col-sm-6 custom-list-box-400">
@@ -86,7 +83,7 @@
   <div class="row">
     <div class="btn-group btn-group-justified px-2" role="group" >
         <div class="btn-group" role="group">
-          <button routerLink="/home" class="btn btn-primary">Home</button>
+          <button routerLink="/user/search" class="btn btn-primary">Search</button>
         </div>
         <div *ngIf="userCode === 3; then AdminPageLink"></div>
         <ng-template #AdminPageLink>

@@ -32,6 +32,7 @@ import { UserListComponent } from './user-list/user-list.component';
 import { UserPlaylistsComponent } from './user-playlists/user-playlists.component';
 import { UserTranslatedSongsComponent } from './user-translated-songs/user-translated-songs.component';
 import { AllTranslatedSongsComponent } from './all-translated-songs/all-translated-songs.component';
+import { UserSearchpageComponent } from './user-searchpage/user-searchpage.component';
 
 @NgModule({
   declarations: [
@@ -58,7 +59,8 @@ import { AllTranslatedSongsComponent } from './all-translated-songs/all-translat
     UserListComponent,
     UserPlaylistsComponent,
     UserTranslatedSongsComponent,
-    AllTranslatedSongsComponent
+    AllTranslatedSongsComponent,
+    UserSearchpageComponent
   ],
   imports: [
     BrowserModule,
