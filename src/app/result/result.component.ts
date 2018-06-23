@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {MusixMatchAPIServiceClient} from '../services/musixmatch.service.client';
 import {UserInput} from '../models/user.input';
 import {DataService} from '../services/data.sevice';
@@ -8,24 +8,41 @@ import {DataService} from '../services/data.sevice';
   templateUrl: './result.component.html',
   styleUrls: ['./result.component.css']
 })
-export class ResultComponent implements OnInit {
+export class ResultComponent implements OnInit, OnDestroy {
   userInput: UserInput = {
     input: ''
   };
   tracks = [];
+  pageCount = 1;
   constructor(private musicService: MusixMatchAPIServiceClient,
               private dataService: DataService) {
   }
   searchForTracks(word) {
     this.musicService
-      .searchTracks(word, 1)
+      .searchTracks(word, this.pageCount)
       .then((result) => {
-        const tracks = (result as any).message.body.track_list;
-        this.tracks = tracks.map(x => x.track);
-      });
+        if (this.pageCount === 1) {
+          const freshItems = (result as any).message.body.track_list.map(x => x.track);
+          this.tracks = freshItems;
+        } else {
+          const currentItems = this.tracks;
+          const newItems = (result as any).message.body.track_list.map(x => x.track);
+          for (let i = 0; i < newItems.length ; i++) {
+            currentItems.push(newItems[i]);
+          }
+          this.tracks = currentItems;
+        }
+        this.pageCount += 1;
+    });
   }
   handleEnter() {
+    this.pageCount = 1;
     this.searchForTracks(this.userInput.input);
+  }
+  onScroll() {
+    if (this.userInput.input) {
+      this.searchForTracks(this.userInput.input);
+    }
   }
   ngOnInit() {
     if (this.dataService.userInput) {
@@ -34,5 +51,9 @@ export class ResultComponent implements OnInit {
     } else {
       this.userInput = new UserInput();
     }
+  }
+
+  ngOnDestroy() {
+    this.dataService.userInput = this.userInput;
   }
 }

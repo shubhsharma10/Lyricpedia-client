@@ -7,7 +7,13 @@
            placeholder="Type lyrics here.."
            [(ngModel)]="userInput.input"/>
   </div>
-  <div class="row justify-content-center py-2">
+  <div class="row justify-content-center py-2"
+       infinite-scroll
+       [infiniteScrollDistance]="0.1"
+       [infiniteScrollUpDistance]="2"
+       [infiniteScrollThrottle]="50"
+       (scrolled)="onScroll()"
+       >
     <table>
       <thead>
       <tr>
@@ -17,17 +23,17 @@
       </tr>
       </thead>
       <tbody>
-      <tr *ngFor="let track of tracks">
-        <td>
-          <a routerLink="/track/{{track.track_id}}">{{track.track_name}}</a>
-        </td>
-        <td>
-          <a routerLink="/artist/{{track.artist_id}}">{{track.artist_name}}</a>
-        </td>
-        <td>
-          <a routerLink="/album/{{track.album_id}}">{{track.album_name}}</a>
-        </td>
-      </tr>
+        <tr *ngFor="let track of tracks">
+          <td>
+            <a routerLink="/track/{{track.track_id}}">{{track.track_name}}</a>
+          </td>
+          <td>
+            <a routerLink="/artist/{{track.artist_id}}">{{track.artist_name}}</a>
+          </td>
+          <td>
+            <a routerLink="/album/{{track.album_id}}">{{track.album_name}}</a>
+          </td>
+        </tr>
       </tbody>
     </table>
   </div>

@@ -34,6 +34,7 @@ import { UserTranslatedSongsComponent } from './user-translated-songs/user-trans
 import { AllTranslatedSongsComponent } from './all-translated-songs/all-translated-songs.component';
 import { UserSearchpageComponent } from './user-searchpage/user-searchpage.component';
 import { AdminConsolePageComponent } from './admin-console-page/admin-console-page.component';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 @NgModule({
   declarations: [
@@ -68,7 +69,8 @@ import { AdminConsolePageComponent } from './admin-console-page/admin-console-pa
     BrowserModule,
     FormsModule,
     AppRoutingModule,
-    NgxDatatableModule
+    NgxDatatableModule,
+    InfiniteScrollModule
   ],
   providers: [
     UserServiceClient,

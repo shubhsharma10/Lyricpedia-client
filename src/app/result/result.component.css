@@ -42,3 +42,7 @@
   border: 2px solid #e50914;
   width: 100%;
 }
+
+.search-results {
+  overflow-y: auto;
+}
