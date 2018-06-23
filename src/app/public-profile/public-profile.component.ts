@@ -73,7 +73,7 @@ export class PublicProfileComponent implements OnInit {
       .catch((error) => console.log(error));
   }
   followVisitingUser() {
-      this.userService.followUser(this.visitingUserId, this.vistingUser.username)
+      this.userService.followUser(this.visitingUserId)
         .then((result) => {
           if (result.status === 200) {
             this.isFollowing = true;
@@ -82,7 +82,7 @@ export class PublicProfileComponent implements OnInit {
         .catch((error) => console.log(error));
   }
   unfollowVisitingUser() {
-    this.userService.unfollowUser(this.visitingUserId, this.vistingUser.username)
+    this.userService.unfollowUser(this.visitingUserId)
       .then((result) => {
         if (result.status === 200) {
           this.isFollowing = false;

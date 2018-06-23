@@ -119,10 +119,9 @@ export class UserServiceClient {
       .then(response => response.json());
   }
 
-  followUser(fuserId, fusername) {
+  followUser(fuserId) {
     const targetUser = {
-      fuserId: fuserId,
-      fuserName: fusername
+      fuserId: fuserId
     };
     return fetch(constants.FOLLOW_USER_API_URL,
       {
@@ -135,10 +134,9 @@ export class UserServiceClient {
       });
   }
 
-  unfollowUser(fuserId, fusername) {
+  unfollowUser(fuserId) {
     const targetUser = {
-      fuserId: fuserId,
-      fuserName: fusername
+      fuserId: fuserId
     };
     return fetch(constants.UNFOLLOW_USER_API_URL,
       {
