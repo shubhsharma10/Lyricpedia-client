@@ -111,9 +111,9 @@
             <h6 class="boxLabel">Translators:</h6>
           </div>
           <ul class="list-group list-group-flush">
-            <li class="list-group-item list-group-item-action flex-column align-items-start" *ngFor="let user of track.lot">
+            <li class="list-group-item list-group-item-action flex-column align-items-start" *ngFor="let user of translatorUsers">
               <div class="d-flex w-100 justify-content-left flex-nowrap" >
-                <a class="mb-1 mx-2" routerLink="/user/{{user.userId}}">
+                <a class="mb-1 mx-2" routerLink="/user/{{user._id}}">
                   <i class="fa fa-user fa-1x mr-2"></i>
                   <label>
                     {{user.username}}

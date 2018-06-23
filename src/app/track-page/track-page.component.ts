@@ -31,8 +31,11 @@ export class TrackPageComponent implements OnInit {
   tempTranslation: string;
   tempTranslationArray = [];
   user: User = new User();
-  likedUsers = [];
-  dislikedUsers = [];
+  likedUsersId = [];
+  dislikedUsersId = [];
+  likedUsers: User[] = [];
+  dislikedUsers: User[] = [];
+  translatorUsers: User[] = [];
   newPlaylist: Playlist = new Playlist();
   playlists: Playlist[] = [];
   setParams(params) {
@@ -84,6 +87,13 @@ export class TrackPageComponent implements OnInit {
           this.tempTranslation = this.track.translation;
           this.tempTranslationArray = this.tempTranslation.split('\n');
           this.track.lot = (updatedSong as Track).lot;
+          return this.userService
+                  .findAllUsersByIds(this.track.lot.map(x => x.userId));
+      })
+      .then((result) => {
+        if (result) {
+          this.translatorUsers = result as User[];
+        }
       })
       .catch((error) => console.log(error));
   }
@@ -152,8 +162,27 @@ export class TrackPageComponent implements OnInit {
             this.tempTranslation = this.track.translation;
             this.tempTranslationArray = this.track.translation.split('\n');
           }
-          this.likedUsers = this.track.listOfUsers.filter(x => x.rating === 'like');
-          this.dislikedUsers = this.track.listOfUsers.filter(x => x.rating === 'dislike');
+          this.likedUsersId = this.track.listOfUsers.filter(x => x.rating === 'like').map(x => x.userId);
+          this.dislikedUsersId = this.track.listOfUsers.filter(x => x.rating === 'dislike').map(x => x.userId);
+          return this.userService.findAllUsersByIds(this.likedUsersId);
+        }
+      })
+      .then((result) => {
+        if (result) {
+          this.likedUsers = result as User[];
+        }
+        return this.userService.findAllUsersByIds(this.dislikedUsersId);
+      })
+      .then((result) => {
+        if (result) {
+          this.dislikedUsers = result as User[];
+        }
+        return this.userService
+          .findAllUsersByIds(this.track.lot.map(x => x.userId));
+      })
+      .then((result) => {
+        if (result) {
+          this.translatorUsers = result as User[];
         }
       })
       .catch((error) => console.log(error));
