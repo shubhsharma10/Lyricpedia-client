@@ -70,13 +70,13 @@ export class MusixMatchAPIServiceClient {
       });
   }
 
-  searchAlbums(artistId) {
+  searchAlbums(artistId,pageNumber) {
     const params = {
       format: 'jsonp',
       callback: 't',
       artist_id: artistId,
       page_size:6,
-      page:1,
+      page:pageNumber,
       s_release_date: 'desc',
       g_album_name: 1,
       apikey: constants.API_KEY

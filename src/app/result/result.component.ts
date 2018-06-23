@@ -22,8 +22,7 @@ export class ResultComponent implements OnInit, OnDestroy {
       .searchTracks(word, this.pageCount)
       .then((result) => {
         if (this.pageCount === 1) {
-          const freshItems = (result as any).message.body.track_list.map(x => x.track);
-          this.tracks = freshItems;
+          this.tracks = (result as any).message.body.track_list.map(x => x.track);
         } else {
           const currentItems = this.tracks;
           const newItems = (result as any).message.body.track_list.map(x => x.track);

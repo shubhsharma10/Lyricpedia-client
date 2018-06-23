@@ -16,8 +16,10 @@ export class ArtistPageComponent implements OnInit {
   artistId: number;
   artistName: string;
   albums = [];
+  pageNumber = 1;
   setParams(params) {
     this.artistId = params['artistId'];
+    this.pageNumber = 1;
     this.loadArtistInfo(this.artistId);
     this.loadAlbums(this.artistId);
   }
@@ -28,12 +30,26 @@ export class ArtistPageComponent implements OnInit {
         this.artistName = result.message.body.artist.artist_name;
       });
   }
+  onScroll() {
+    if (this.artistId) {
+      this.loadAlbums(this.artistId);
+    }
+  }
   loadAlbums(artistId) {
     this.musicService
-      .searchAlbums(artistId)
+      .searchAlbums(artistId, this.pageNumber)
       .then((result) => {
-        const newItems = result.message.body.album_list;
-        this.albums = newItems.map(x => x.album);
+        if (this.pageNumber === 1) {
+          this.albums = result.message.body.album_list.map(x => x.album);
+        } else {
+          const currentItems = this.albums;
+          const newItems = result.message.body.album_list.map(x => x.album);
+          for (let i = 0; i < newItems.length ; i++) {
+            currentItems.push(newItems[i]);
+          }
+          this.albums = currentItems;
+        }
+        this.pageNumber += 1;
       });
   }
   ngOnInit() {
