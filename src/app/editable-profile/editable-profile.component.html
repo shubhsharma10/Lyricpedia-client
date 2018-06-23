@@ -28,6 +28,11 @@
              [disabled] = "userNotLoggedIn"
              placeholder="X Street,Boston,MA"
              class="form-control my-2"/>
+      <select [(ngModel)]="user.userType" class="form-control my-2">
+        <option value="Admin">Admin</option>
+        <option value="User">User</option>
+        <option value="Premium">Premium User</option>
+      </select>
       <button (click)="update()"
               [disabled] = "userNotLoggedIn"
               class="btn btn-primary btn-block my-2">
