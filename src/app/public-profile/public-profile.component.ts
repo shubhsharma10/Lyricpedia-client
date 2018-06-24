@@ -21,6 +21,8 @@ export class PublicProfileComponent implements OnInit {
   isCurrentUserTarget = false;
   vistingUser: User = new User();
   currentUser: User = new User();
+  followers: User[] = [];
+  following: User[] = [];
   setParams(params) {
     this.visitingUserId = params['userId'];
     this.loadCurrentUser();
@@ -68,6 +70,8 @@ export class PublicProfileComponent implements OnInit {
           if (user) {
             console.log(user);
             this.vistingUser = user as User;
+            this.loadAllFollowers(this.vistingUser.followers.map( x => x.userId));
+            this.loadAllFollowing(this.vistingUser.following.map( x => x.userId));
           }
       })
       .catch((error) => console.log(error));
@@ -77,6 +81,7 @@ export class PublicProfileComponent implements OnInit {
         .then((result) => {
           if (result.status === 200) {
             this.isFollowing = true;
+            this.loadVistingUser();
           }
         })
         .catch((error) => console.log(error));
@@ -86,9 +91,48 @@ export class PublicProfileComponent implements OnInit {
       .then((result) => {
         if (result.status === 200) {
           this.isFollowing = false;
+          this.loadVistingUser();
         }
       })
       .catch((error) => console.log(error));
+  }
+  loadAllFollowers(listOfUserIds) {
+    console.log('will load followers now');
+    this.userService
+      .findAllUsersByIds(listOfUserIds)
+      .then((result) => {
+        this.followers = result as User[];
+      })
+      .catch((error) => console.log(error));
+  }
+  getFollowerUsername(userId) {
+    const userEntryIndex = this.followers
+      .map(function (x) { return x._id; })
+      .indexOf(userId);
+    if (userEntryIndex > -1) {
+      return this.followers[userEntryIndex].username;
+    } else {
+      return '';
+    }
+  }
+  loadAllFollowing(listOfUserIds) {
+    console.log('will load following users now');
+    this.userService
+      .findAllUsersByIds(listOfUserIds)
+      .then((result) => {
+        this.following = result as User[];
+      })
+      .catch((error) => console.log(error));
+  }
+  getFollowingUsername(userId) {
+    const userEntryIndex = this.following
+      .map(function (x) { return x._id; })
+      .indexOf(userId);
+    if (userEntryIndex > -1) {
+      return this.following[userEntryIndex].username;
+    } else {
+      return '';
+    }
   }
   ngOnInit() {
   }

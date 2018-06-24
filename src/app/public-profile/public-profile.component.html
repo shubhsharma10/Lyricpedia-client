@@ -24,6 +24,45 @@
     <div class="col-xs-12 col-sm-6 custom-list-box-400">
       <app-user-playlists></app-user-playlists>
     </div>
+    <div class="col-xs-12 col-sm-6 custom-list-box-400">
+      <div class="borderedContainer">
+        <div class="title-label">
+          <h6 class="boxLabel">Followers</h6>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item list-group-item-action flex-column align-items-start" *ngFor="let userEntry of followers">
+            <div class="d-flex w-100 justify-content-left flex-nowrap" >
+              <a class="mb-1 mx-2" routerLink="/user/{{userEntry._id}}">
+                <i class="fa fa-user fa-1x mr-2"></i>
+                <label>
+                  {{getFollowerUsername(userEntry._id)}}
+                </label>
+              </a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-6 custom-list-box-400">
+      <div class="borderedContainer">
+        <div class="title-label">
+          <h6 class="boxLabel">Following</h6>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item list-group-item-action flex-column align-items-start" *ngFor="let userEntry of following">
+            <div class="d-flex w-100 justify-content-left flex-nowrap" >
+              <a class="mb-1 mx-2" routerLink="/user/{{userEntry._id}}">
+                <i class="fa fa-user fa-1x mr-2"></i>
+                <label>
+                  {{getFollowingUsername(userEntry._id)}}
+                </label>
+              </a>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+    </div>
   </div>
 </div>
 <app-bottom-navbar></app-bottom-navbar>
