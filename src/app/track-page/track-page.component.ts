@@ -198,6 +198,8 @@ export class TrackPageComponent implements OnInit {
       })
       .then((result) => {
         if (result) {
+          console.log('translator users: are');
+          console.log(result);
           this.translatorUsers = result as User[];
         }
       })

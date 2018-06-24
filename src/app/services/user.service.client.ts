@@ -1,4 +1,5 @@
 import * as constants from '../constants/index';
+import {User} from '../models/user.model.client';
 
 export class UserServiceClient {
 
@@ -128,7 +129,10 @@ export class UserServiceClient {
             'content-type': 'application/json'
           }
         })
-      .then(response => response.json());
+      .then(response => response.json())
+      .then((result) => {
+        return (result as User[]).filter(x => x);
+      });
   }
 
   followUser(fuserId) {

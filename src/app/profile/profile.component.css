@@ -1,6 +1,10 @@
 .full-width{float:left}
 
-
+.panel {
+  border: 1px solid grey;
+  border-radius: 5px;
+  padding: 1px;
+}
 .btn-group-justified {
   display: table;
   width: 100%;
