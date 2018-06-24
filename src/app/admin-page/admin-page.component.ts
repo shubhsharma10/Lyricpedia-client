@@ -11,6 +11,7 @@ export class AdminPageComponent implements OnInit {
 
   constructor(private userService: UserServiceClient) { }
   users: User[] = [];
+  isAdminUserNotLoggedIn = false;
   currentUser: User = new User();
   username: string;
   password: string;
@@ -84,9 +85,15 @@ export class AdminPageComponent implements OnInit {
       })
       .then((result) => {
         this.currentUser = result as User;
-        this.loadAllUsers();
+        if (this.currentUser.userType === 'Admin') {
+          this.isAdminUserNotLoggedIn = false;
+          this.loadAllUsers();
+        } else {
+          this.isAdminUserNotLoggedIn = true;
+        }
       })
       .catch((error) => {
+        this.isAdminUserNotLoggedIn = true;
         console.log(error);
       });
   }
