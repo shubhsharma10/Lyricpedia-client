@@ -21,6 +21,7 @@ export class ProfileComponent implements OnInit {
       .updateProfile(user)
       .then(function(result) {
         console.log(result);
+        document.getElementById('openAlertButton').click();
       });
   }
   logout() {

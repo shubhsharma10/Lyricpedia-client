@@ -35,6 +35,11 @@
                 class="btn btn-primary btn-block my-2">
           Update
         </button>
+        <button id="openAlertButton"
+                [hidden]="true"
+                data-toggle="modal"
+                data-target="#profileUpdatedAlert">
+        </button>
       </div>
     </div>
     <div *ngIf="userCode === 1 || userCode === 2 ; then FollowingUsers"></div>
@@ -95,6 +100,18 @@
           <button [disabled] = "userNotLoggedIn" (click)="logout()" class="btn btn-danger" >Logout</button>
         </div>
       </div>
+  </div>
+  <div id="profileUpdatedAlert" tabindex="-1" class="modal fade">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Profile updated sucessfully!</h5>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success" data-dismiss="modal">Ok</button>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 <app-bottom-navbar></app-bottom-navbar>

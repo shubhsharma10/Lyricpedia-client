@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {UserServiceClient} from '../services/user.service.client';
-import {TrackServiceClient} from '../services/track.service.client';
 import {User} from '../models/user.model.client';
 
 @Component({
@@ -50,7 +49,7 @@ export class AdminPageComponent implements OnInit {
           }
         })
         .then((result) => {
-          console.log(result);
+          document.getElementById('openAlertButton').click();
         })
         .catch((error) => {
           console.log(error);
@@ -61,8 +60,7 @@ export class AdminPageComponent implements OnInit {
     this.userService
       .deleteUser(userId)
       .then((result) => {
-      console.log(result);
-      this.loadAllUsers();
+        this.loadAllUsers();
       })
       .catch((error) => console.log(error));
   }

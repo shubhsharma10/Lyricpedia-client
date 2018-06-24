@@ -17,8 +17,8 @@ body, html {
 }
 
 .page-container{
-  margin-top: 80px;
-  margin-bottom: 50px;
+  padding-top: 80px;
+  padding-bottom: 50px;
 }
 
 .center-div {
