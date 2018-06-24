@@ -35,7 +35,7 @@ export class TrackServiceClient {
   }
 
   deleteSong(trackId) {
-    return fetch(constants.DIRECT_SONG_API_URL.replace('TID', trackId), {
+    return fetch(constants.DIRECT_SONG_API_URL.replace('SID', trackId), {
       credentials: 'include', // include, same-origin, *omit
       method: 'delete'
     });
