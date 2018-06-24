@@ -88,7 +88,7 @@
   <div class="row">
     <div class="btn-group btn-group-justified px-2" role="group" >
         <div class="btn-group" role="group">
-          <button routerLink="/user/search" class="btn btn-primary">Search</button>
+          <button [disabled] = "userNotLoggedIn" routerLink="/user/search" class="btn btn-primary">Search</button>
         </div>
         <div *ngIf="userCode === 3; then AdminPageLink"></div>
         <ng-template #AdminPageLink>
