@@ -48,7 +48,7 @@ export class AdminPageComponent implements OnInit {
             this.resetInputFields();
           }
         })
-        .then((result) => {
+        .then(() => {
           document.getElementById('openAlertButton').click();
         })
         .catch((error) => {
