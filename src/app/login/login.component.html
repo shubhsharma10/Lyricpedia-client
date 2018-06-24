@@ -14,7 +14,7 @@
           Username/password are not correct. Please try again!
         </div>
       </ng-template>
-      <h4>Login</h4>
+      <h4>Sign in</h4>
       <input [(ngModel)]="user.username"
              [disabled] = "userLoggedIn"
              placeholder="username"
@@ -28,11 +28,10 @@
       <button (click)="login()"
               [disabled] = "userLoggedIn"
               class="btn btn-primary btn-block my-2">
-        Login
+        Sign in
       </button>
-      <div class="d-flex justify-content-between">
-        <button routerLink="/home" class="btn btn-primary">Home</button>
-        <button routerLink="/register" class="btn btn-success">Register</button>
+      <div class="d-flex justify-content-start">
+        <a routerLink="/register">Create account</a>
       </div>
     </div>
   </div>

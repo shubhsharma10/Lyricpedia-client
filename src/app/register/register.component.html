@@ -20,7 +20,7 @@
           Passwords should be same!
         </div>
       </ng-template>
-      <h4>Register</h4>
+      <h4>Sign up</h4>
 
       <input [(ngModel)]="username"
              type="text"
@@ -43,11 +43,10 @@
       </select>
       <button (click)="register(username, password, password2,selectedUserType)"
               class="btn btn-primary btn-block my-2">
-        Register
+        Sign up
       </button>
-      <div class="d-flex justify-content-between">
-        <button routerLink="/home" class="btn btn-primary">Home</button>
-        <button routerLink="/login" class="btn btn-success">Login</button>
+      <div class="d-flex justify-content-end">
+        <a routerLink="/login">Sign in</a>
       </div>
     </div>
   </div>

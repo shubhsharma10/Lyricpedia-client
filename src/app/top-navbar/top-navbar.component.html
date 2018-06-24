@@ -6,13 +6,13 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
-      <a routerLink="/login" class="btn white-button mr-1">Login</a>
-      <a routerLink="/register" class="btn white-button">Register</a>
+      <a routerLink="/login" class="btn white-button mr-1">Sign in</a>
+      <a routerLink="/register" class="btn white-button">Sign up</a>
     </div>
   </ng-template>
   <ng-template #LoggedInUserTemplate>
     <div class="ml-auto">
-      <a routerLink="/profile" class="user-profile mx-2 pb-3 LandingTextUserName">{{user.username}}</a>
+      <a routerLink="/profile" class="user-profile mx-2 pb-3 LandingTextUserName"><i class="fa fa-user mr-1"></i>{{user.username}}</a>
     </div>
   </ng-template>
 </nav>
